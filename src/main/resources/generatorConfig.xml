@@ -15,7 +15,7 @@
 
         <!--数据库链接URL，用户名、密码 -->
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost/demo?useSSL=false&amp;serverTimezone=Hongkong&amp;characterEncoding=utf-8&amp;autoReconnect=TRUE"
+                        connectionURL="jdbc:mysql://localhost/hoteldata?useSSL=false&amp;serverTimezone=Hongkong&amp;characterEncoding=utf-8&amp;autoReconnect=TRUE"
                         userId="root" password="root">
         </jdbcConnection>
         <!-- 非必需，类型处理器，在数据库类型和java类型之间的转换控制-->
@@ -24,7 +24,7 @@
         </javaTypeResolver>
 
         <!-- 生成实体类的包名和位置-->
-        <javaModelGenerator targetPackage="com.xmut.demo.entity" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.xmut.hotel.entity" targetProject="src/main/java">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="true"/>
             <!-- 从数据库返回的值被清理前后的空格 -->
@@ -35,12 +35,14 @@
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!-- 生成mapper xml对应Client的包名和位置-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.xmut.demo.mapper" targetProject="src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.xmut.hotel.mapper" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
         <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名-->
-        <table tableName="hotel_user" domainObjectName="User" enableCountByExample="false" enableUpdateByExample="false"
+        <table tableName="t_user" domainObjectName="User" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+        <table tableName="t_room" domainObjectName="Room" enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
     </context>
 </generatorConfiguration>

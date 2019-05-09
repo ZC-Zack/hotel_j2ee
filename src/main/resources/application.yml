@@ -4,7 +4,7 @@ service:
 spring:
   datasource:
     name: demo
-    url: jdbc:mysql://localhost:3306/demo?characterEncoding=utf-8
+    url: jdbc:mysql://localhost:3306/hoteldate?characterEncoding=utf-8
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -22,5 +22,5 @@ devtools:
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.xmut.demo.entity
+  type-aliases-package: com.xmut.hotel.entity
 
