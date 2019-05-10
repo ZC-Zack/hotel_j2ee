@@ -28,4 +28,16 @@ public class AdminController {
     public JSONObject getAllRoom(){
         return roomService.getAllRoom();
     }
+
+    //已用房间
+    @RequestMapping("/roomUsed")
+    public String roomUsed(){
+        return "roomUsed";
+    }
+
+    //空房间查询
+    @RequestMapping
+    public String roomEmpty(){
+        return "roomEmpty";
+    }
 }
