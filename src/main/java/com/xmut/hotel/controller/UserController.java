@@ -4,10 +4,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class TestController {
+@RequestMapping("/user")
+public class UserController {
 
-    @RequestMapping("/test1")
-    public String testHtml(){
-        return "test";
+    @RequestMapping("/comment")
+    public String comment(){
+        return "user/comment";
     }
 }
