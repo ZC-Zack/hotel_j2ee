@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xmut.hotel.mapper.CommentMapper">
+  <resultMap id="BaseResultMap" type="com.xmut.hotel.entity.Comment">
+    <result column="order_id" jdbcType="VARCHAR" property="orderId" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="comment_time" jdbcType="VARCHAR" property="commentTime" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="star_number" jdbcType="DOUBLE" property="starNumber" />
+  </resultMap>
+  <insert id="insert" parameterType="com.xmut.hotel.entity.Comment">
+    insert into t_comment (order_id, username, comment_time, 
+      content, star_number)
+    values (#{orderId,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{commentTime,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{starNumber,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xmut.hotel.entity.Comment">
+    insert into t_comment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="commentTime != null">
+        comment_time,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="starNumber != null">
+        star_number,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="commentTime != null">
+        #{commentTime,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="starNumber != null">
+        #{starNumber,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+</mapper>
