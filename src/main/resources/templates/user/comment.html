@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -33,7 +33,12 @@
             </ul>
             <div class="layui-tab-content">
                 <div class="layui-tab-item layui-show">
-
+                    <table >
+                        <tr th:each="comment:${commentList}">
+                            <td style="width: 40px;" th:text="${comment.orderId}"></td>
+                            <td style="width: 40px;" th:text="${comment.username}"></td>
+                        </tr>
+                    </table>
                 </div>
                 <div class="layui-tab-item">2</div>
             </div>
@@ -41,6 +46,7 @@
     </div>
 
 </div>
+<script src="../webjars/jquery/1.11.1/jquery.js"></script>
 <script src="../webjars/layui/2.4.5/layui.js"></script>
 <script>
     //注意：导航 依赖 element 模块，否则无法进行功能性操作
@@ -58,17 +64,25 @@
         //…
     });
 </script>
-
 <script>
     function loadData() {
         $.ajax({
             type: "GET",
-            url: "/user/comment",
+            url: "/user/getAllComment",
             dataType: "json",
             success: function (data) {
                 console.log(data);
             }
         });
+        $.ajax({
+            type: "POST",
+            url: "/user/comment",
+            dataType: "json",
+            success:function (data) {
+                alert(aa);
+
+            }
+        })
     }
 </script>
 

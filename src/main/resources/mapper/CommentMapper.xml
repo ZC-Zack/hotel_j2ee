@@ -51,4 +51,8 @@
       </if>
     </trim>
   </insert>
+
+  <select id="selectAllComment" resultMap="BaseResultMap">
+        select * from t_comment
+  </select>
 </mapper>
