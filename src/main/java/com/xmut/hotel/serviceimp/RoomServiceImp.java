@@ -19,11 +19,24 @@ public class RoomServiceImp implements RoomService {
 
     private JSONObject jsonObject;
 
+    @Override
+    public List<Room> getListRoom() {
+        return roomMapper.selectAllRoom();
+    }
+
     //获取所有房间信息的方法实现
     @Override
-    public JSONObject getAllRoom() {
-        List<Room> list = roomMapper.getAllRoom();
+    public JSONObject getJSONObjectRoom() {
+        List<Room> list = getListRoom();
         JSONArray jsonArray = JSONArray.parseArray(JSON.toJSONString(list));
+        for(int i = 0; i < jsonArray.size(); i++){
+           JSONObject jsonObject = jsonArray.getJSONObject(i);
+           if("0".equals(jsonObject.getString("roomExit"))){
+               jsonObject.put("roomExit", "否");
+           }else {
+               jsonObject.put("roomExit", "是");
+           }
+        }
         formatJSON(jsonArray);
         return jsonObject;
     }

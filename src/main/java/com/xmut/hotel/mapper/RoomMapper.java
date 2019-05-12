@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface RoomMapper {
     //获取所有房间的Map
-    List<Room> getAllRoom();
+    List<Room> selectAllRoom();
 }

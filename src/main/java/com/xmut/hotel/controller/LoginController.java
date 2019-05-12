@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 @Controller
 
-@RequestMapping(value = {"/login"})
+@RequestMapping("/")
 public class LoginController {
     /**
      * 注入service
@@ -23,24 +23,24 @@ public class LoginController {
      * 跳转到用户登录页面
      * @return 登录页面
      */
-    @RequestMapping(value = {"/loginHtml"})
+    @RequestMapping("/loginHtml")
     public String loginHtml(){
-        return "user/login";
+        return "login";
     }
     /**
      * 跳转到用户注册页面
      * @return 注册页面
      */
-    @RequestMapping(value = {"/registerpage"})
+    @RequestMapping("/registerPage")
     public String registerpage(){
-        return "user/register";
+        return "register";
     }
 
     /**
      * 获取用户名与密码，用户登录
      * @return 登录成功页面
      */
-    @RequestMapping(value = {"/userLogin"})
+    @RequestMapping("/userLogin")
     public String userLogin(@RequestParam("username") String username, @RequestParam("password") String password, HttpServletRequest request){
 
         User user = loginService.userLogin(username,password);
@@ -48,9 +48,9 @@ public class LoginController {
         if(user != null){                                                  //登录成功
             request.getSession().setAttribute("sessio" +
                     "n_user",user);     //将用户信息放入session
-            return "user/index";
+            return "user/admin";
         }
-        return "user/loginError";
+        return "loginError";
     }
 
     /**

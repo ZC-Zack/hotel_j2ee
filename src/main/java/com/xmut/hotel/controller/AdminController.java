@@ -26,7 +26,7 @@ public class AdminController {
     @RequestMapping(value = "/getAllRoom", method = RequestMethod.GET)
     @ResponseBody
     public JSONObject getAllRoom(){
-        return roomService.getAllRoom();
+        return roomService.getJSONObjectRoom();
     }
 
     //已用房间

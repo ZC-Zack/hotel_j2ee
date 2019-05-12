@@ -66,13 +66,13 @@
     <div class="layui-body">
         <!-- 内容主体区域 -->
         <div style="padding: 15px;">
-            <table id="roomInformation" lay-filter="test"></table>
+            <table id="roomInformation" lay-filter="roomInformation"></table>
         </div>
     </div>
 
     <div class="layui-footer">
         <!-- 底部固定区域 -->
-        © layui.com - 底部固定区域
+        © 后台系统
     </div>
 </div>
 <script src="../webjars/layui/2.4.5/layui.js"></script>
@@ -83,14 +83,12 @@
         //第一个实例
         table.render({
             elem: '#roomInformation'
-            ,height: 312
-            ,url: '/getAllRoom' //数据接口
-            ,page: true //开启分页
+            ,url: '/admin/getAllRoom' //数据接口
             ,cols: [
                 [ //表头
-                {field: 'roomId', title: '房间号', width:80, sort: true, fixed: 'left'}
-                ,{field: 'roomName', title: '房间名', width:80}
-                ,{field: 'roomPrice', title: '价钱', width:80, sort: true}
+                {field: 'roomId', title: '房间号', width:120, sort: true, fixed: 'left'}
+                ,{field: 'roomName', title: '房间名', width:200}
+                ,{field: 'roomPrice', title: '价钱', width:80}
                 ,{field: 'roomExit', title: '房间是否有人预定', width:80}
 
                 ]
