@@ -10,7 +10,7 @@
 <div class="layui-layout">
     <div class="layui-header">
         <ul class="layui-nav" lay-filter="">
-            <li class="layui-nav-item"><a href="">房间预订</a></li>
+            <li class="layui-nav-item"><a href="roomOrder">房间预订</a></li>
             <li class="layui-nav-item layui-this"><a href="comment">评价</a></li>
             <li class="layui-nav-item"><a href="">大数据</a></li>
             <li class="layui-nav-item">
@@ -28,11 +28,11 @@
     <div class="layui-layout-body">
         <div class="layui-tab layui-tab-card">
             <ul class="layui-tab-title">
-                <li class="layui-this">已评价</li>
-                <li>待评价</li>
+                <li>已评价</li>
+                <li class="layui-this">待评价</li>
             </ul>
             <div class="layui-tab-content">
-                <div class="layui-tab-item layui-show">
+                <div class="layui-tab-item ">
                     <table >
                         <tr th:each="comment:${commentList}">
                             <td style="width: 40px;" th:text="${comment.orderId}"></td>
@@ -42,8 +42,8 @@
                 </div>
 
 <!--               待评价-->
-                <div class="layui-tab-item">
-                    <table id="noEvaluation" lay-filter="test"></table>
+                <div class="layui-tab-item layui-show">
+                    <table id="noEvaluation" lay-filter="noEvaluation"></table>
                 </div>
             </div>
         </div>
@@ -68,27 +68,7 @@
         //…
     });
 </script>
-<script>
-    function loadData() {
-        $.ajax({
-            type: "GET",
-            url: "/user/getAllComment",
-            dataType: "json",
-            success: function (data) {
-                console.log(data);
-            }
-        });
-        $.ajax({
-            type: "POST",
-            url: "/user/comment",
-            dataType: "json",
-            success:function (data) {
-                alert(aa);
 
-            }
-        })
-    }
-</script>
 <script>
     layui.use('table', function(){
         var table = layui.table;
@@ -101,11 +81,57 @@
                 [ //表头
                     {field: 'orderId', title: '订单号', width:80, sort: true, fixed: 'left'}
                     ,{field: 'commentTime', title: '下单时间', width:80}
+                    ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
                 ]
             ]
         });
+        //监听行工具事件
+        var table = layui.table;
+        table.on('tool(noEvaluation)', function (obj) {
+            var data = obj.data;
+            //console.log(obj)
+            if (obj.event === 'edit') {
+                layer.prompt({
+                    formType: 2
+                    ,value: data.email
+                }, function(value, index){
+                    alterComment(value);
+                    layer.close(index);
+                });
+            }
+        });
     });
 </script>
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+</script>
+<script>
+    function alterComment(value) {
+        $.ajax({
+            url: "/user/updateComment",
+            type: "POST",
+            dataType: "json",
+            data: value,
+            success: function (data) {
+                console.log(data);
+                console.log(value);
+            }
+        })
+    }
+    function testNull() {
+        $.ajax({
+            url: "",
+            type: "POST",
+            dataType: "json",
+            data: value,
+            success: function (data) {
+                console.log(data);
+                console.log(value);
+            }
+        })
+    }
+</script>
+
 
 </body>
 </html>
