@@ -40,7 +40,11 @@
                         </tr>
                     </table>
                 </div>
-                <div class="layui-tab-item">2</div>
+
+<!--               待评价-->
+                <div class="layui-tab-item">
+                    <table id="noEvaluation" lay-filter="test"></table>
+                </div>
             </div>
         </div>
     </div>
@@ -84,6 +88,23 @@
             }
         })
     }
+</script>
+<script>
+    layui.use('table', function(){
+        var table = layui.table;
+
+        //第一个实例
+        table.render({
+            elem: '#noEvaluation'
+            ,url: '/user/getNoEvaluation' //数据接口
+            ,cols: [
+                [ //表头
+                    {field: 'orderId', title: '订单号', width:80, sort: true, fixed: 'left'}
+                    ,{field: 'commentTime', title: '下单时间', width:80}
+                ]
+            ]
+        });
+    });
 </script>
 
 </body>

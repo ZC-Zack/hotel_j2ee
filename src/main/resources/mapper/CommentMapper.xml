@@ -7,52 +7,16 @@
     <result column="comment_time" jdbcType="VARCHAR" property="commentTime" />
     <result column="content" jdbcType="VARCHAR" property="content" />
     <result column="star_number" jdbcType="DOUBLE" property="starNumber" />
+    <result column="comment_exit" jdbcType="INTEGER" property="commentExit" />
   </resultMap>
-  <insert id="insert" parameterType="com.xmut.hotel.entity.Comment">
-    insert into t_comment (order_id, username, comment_time, 
-      content, star_number)
-    values (#{orderId,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{commentTime,jdbcType=VARCHAR}, 
-      #{content,jdbcType=VARCHAR}, #{starNumber,jdbcType=DOUBLE})
-  </insert>
-  <insert id="insertSelective" parameterType="com.xmut.hotel.entity.Comment">
-    insert into t_comment
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="orderId != null">
-        order_id,
-      </if>
-      <if test="username != null">
-        username,
-      </if>
-      <if test="commentTime != null">
-        comment_time,
-      </if>
-      <if test="content != null">
-        content,
-      </if>
-      <if test="starNumber != null">
-        star_number,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="orderId != null">
-        #{orderId,jdbcType=VARCHAR},
-      </if>
-      <if test="username != null">
-        #{username,jdbcType=VARCHAR},
-      </if>
-      <if test="commentTime != null">
-        #{commentTime,jdbcType=VARCHAR},
-      </if>
-      <if test="content != null">
-        #{content,jdbcType=VARCHAR},
-      </if>
-      <if test="starNumber != null">
-        #{starNumber,jdbcType=DOUBLE},
-      </if>
-    </trim>
-  </insert>
+
 
   <select id="selectAllComment" resultMap="BaseResultMap">
         select * from t_comment
+  </select>
+
+<!--  通过是否评价来选取表-->
+  <select id="selectCommentByExit" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select * from t_comment where comment_exit = #{commentExit,jdbcType=INTEGER}
   </select>
 </mapper>

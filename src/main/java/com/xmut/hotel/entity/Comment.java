@@ -11,6 +11,8 @@ public class Comment {
 
     private Double starNumber;
 
+    private Integer commentExit;
+
     public String getOrderId() {
         return orderId;
     }
@@ -49,5 +51,13 @@ public class Comment {
 
     public void setStarNumber(Double starNumber) {
         this.starNumber = starNumber;
+    }
+
+    public Integer getCommentExit() {
+        return commentExit;
+    }
+
+    public void setCommentExit(Integer commentExit) {
+        this.commentExit = commentExit;
     }
 }

@@ -137,7 +137,7 @@
                     <!-- 配置文件位置 -->
                     <configurationFile>${basedir}/src/main/resources/generatorConfig.xml</configurationFile>
                     <!-- 是否覆盖 -->
-                    <overwrite>true</overwrite>
+                    <overwrite>false</overwrite>
                     <!--允许移动生成的文件 -->
                     <verbose>true</verbose>
                 </configuration>

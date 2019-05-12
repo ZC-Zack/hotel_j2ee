@@ -1,6 +1,7 @@
 package com.xmut.hotel.controller;
 
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.xmut.hotel.service.CommentService;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,5 +21,12 @@ public class CommentController {
     @ResponseBody
     public JSONArray getAllComment(){
         return commentService.getAllComment();
+    }
+
+    //返回未评价
+    @RequestMapping("/getNoEvaluation")
+    @ResponseBody
+    public JSONObject getNoEvaluation(){
+        return commentService.getJSONObjectCommentByExit(0);
     }
 }
