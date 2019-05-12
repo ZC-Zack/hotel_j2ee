@@ -28,4 +28,14 @@
       </if>
     </trim>
   </insert>
+
+  <!--用户登录验证-->
+  <select id="userlogin" parameterType="com.xmut.hotel.entity.User" resultType="com.xmut.hotel.entity.User">
+      SELECT username,password FROM t_user WHERE username = #{username} AND password = #{password}
+  </select>
+
+  <!--新用户注册-->
+  <insert id="adduser" parameterType="com.xmut.hotel.entity.User" useGeneratedKeys="true" keyProperty="id">
+     INSERT INTO t_user (username,password) VALUES (#{username},#{password})
+  </insert>
 </mapper>

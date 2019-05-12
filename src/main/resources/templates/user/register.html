@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="/resources/style/register.css">
+    <link rel="stylesheet" href="/webjars/layui/2.4.5/css/layui.css"/>
+    <script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
+    <script src="/webjars/layui/2.4.5/layui.js"></script>
+
+</head>
+
+<body>
+<form action="/login/uregister" method="post">
+    <div class="head">酒&nbsp店&nbsp管&nbsp理&nbsp系&nbsp统</div>
+    <div class="register-content">
+        <div class="register-logle"><span>注册</span></div>
+        <hr style="background-color:rgba(0,0,1,0.2);">
+        <div class="register-name-content">
+            <div class="register-name-logle">
+                <i class="layui-icon layui-icon-username" style="font-size: 20px;color:white;"></i>
+            </div>
+            <div class="register-name-line"></div>
+            <input class="name-input" id="name" name="username" type="text" placeholder="请输入用户名">
+        </div>
+        <div class="register-password-content">
+            <div class="register-password-logle">
+                <i class="layui-icon layui-icon-password" style="font-size: 20px;color:white;"></i>
+            </div>
+            <div class="register-password-line"></div>
+            <input class="password-input" id="password" name="password" type="password" placeholder="请输入密码">
+        </div>
+        <div class="register-repeatpassword-content">
+            <div class="register-password-logle">
+                <i class="layui-icon layui-icon-password" style="font-size: 20px;color:white;"></i>
+            </div>
+            <div class="register-password-line"></div>
+            <input class="repeatpassword-input" id="repeatpassword" name="password2" type="password"
+                   placeholder="请再次输入密码">
+        </div>
+        <div class="return-login">
+            <a href="login.html">
+                <div class="return">返回登录</div>
+            </a>
+        </div>
+        <button class="register-button" type="submit">提交</button>
+    </div>
+</form>
+
+</body>
+
+</html>
+
+
