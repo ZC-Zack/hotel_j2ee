@@ -7,7 +7,7 @@ public class Room {
 
     private Integer roomPrice;
 
-    private Byte roomExit;
+    private Integer roomExit;
 
     public String getRoomId() {
         return roomId;
@@ -33,11 +33,11 @@ public class Room {
         this.roomPrice = roomPrice;
     }
 
-    public Byte getRoomExit() {
+    public Integer getRoomExit() {
         return roomExit;
     }
 
-    public void setRoomExit(Byte roomExit) {
+    public void setRoomExit(Integer roomExit) {
         this.roomExit = roomExit;
     }
 }

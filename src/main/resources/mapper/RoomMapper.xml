@@ -5,7 +5,7 @@
     <result column="room_id" jdbcType="VARCHAR" property="roomId" />
     <result column="room_name" jdbcType="VARCHAR" property="roomName" />
     <result column="room_price" jdbcType="INTEGER" property="roomPrice" />
-    <result column="room_exit" jdbcType="TINYINT" property="roomExit" />
+    <result column="room_exit" jdbcType="INTEGER" property="roomExit" />
   </resultMap>
 
   <!--查询所有房间-->
