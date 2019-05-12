@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>layout 后台大布局 - Layui</title>
+    <link rel="stylesheet" href="../webjars/layui/2.4.5/css/layui.css">
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout">
+    <div class="layui-header">
+        <ul class="layui-nav" lay-filter="">
+            <li class="layui-nav-item layui-this"><a href="roomOrder">房间预订</a></li>
+            <li class="layui-nav-item"><a href="comment">评价</a></li>
+            <li class="layui-nav-item"><a href="">大数据</a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">解决方案</a>
+                <dl class="layui-nav-child"> <!-- 二级菜单 -->
+                    <dd><a href="">移动模块</a></dd>
+                    <dd><a href="">后台模版</a></dd>
+                    <dd><a href="">电商平台</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item"><a href="">社区</a></li>
+        </ul>
+    </div>
+
+    <div class="layui-layout-body">
+
+    </div>
+
+</div>
+<script src="../webjars/jquery/1.11.1/jquery.js"></script>
+<script src="../webjars/layui/2.4.5/layui.js"></script>
+<script>
+    //注意：导航 依赖 element 模块，否则无法进行功能性操作
+    layui.use('element', function(){
+        var element = layui.element;
+
+        //…
+    });
+</script>
+<script>
+    //注意：选项卡 依赖 element 模块，否则无法进行功能性操作
+    layui.use('element', function(){
+        var element = layui.element;
+
+        //…
+    });
+</script>
+
+</body>
+</html>

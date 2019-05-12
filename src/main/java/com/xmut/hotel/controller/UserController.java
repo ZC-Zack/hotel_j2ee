@@ -18,4 +18,10 @@ public class UserController {
         map.addAttribute("commentList", commentService.getListComment());
         return "user/comment";
     }
+
+    @RequestMapping("/roomOrder")
+    public String roomOrder(ModelMap map){
+        return "user/roomOrder";
+    }
+
 }
