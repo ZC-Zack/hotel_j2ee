@@ -35,9 +35,23 @@ public class AdminController {
         return "admin/roomUsed";
     }
 
+    //已用房间信息查询
+    @RequestMapping("/used")
+    @ResponseBody
+    public JSONObject getRoomUsed(){
+        return roomService.getListJSONObjectRoomByExit(1);
+    }
+
     //空房间查询
     @RequestMapping("/roomEmpty")
     public String roomEmpty(){
         return "admin/roomEmpty";
+    }
+
+    //空房间信息查询
+    @RequestMapping("empty")
+    @ResponseBody
+    public JSONObject getRoomEmpty(){
+        return roomService.getListJSONObjectRoomByExit(0);
     }
 }

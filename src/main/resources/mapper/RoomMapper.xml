@@ -17,4 +17,9 @@
   <select id="selectAllRoomByGroup" resultMap="BaseResultMap">
         select * from t_room group by room_name
   </select>
+
+<!--  通过房间是否被预订查找-->
+  <select id="selectRoomByExit" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select * from t_room where room_exit=#{roomExit,jdbcType=INTEGER}
+  </select>
 </mapper>

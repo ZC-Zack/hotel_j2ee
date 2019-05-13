@@ -19,4 +19,10 @@ public interface RoomService {
 
     //格式转换，格式转换成layui表格要求的格式
     void formatJSON(JSONArray jsonArray);
+
+    //查找房间信息通过Exit,返回List合集
+    List<Room> getListListRoomByExit(Integer exit);
+
+    //查找房间信息通过Exit,返回JSON合集
+    JSONObject getListJSONObjectRoomByExit(Integer exit);
 }

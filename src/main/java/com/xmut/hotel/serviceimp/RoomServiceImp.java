@@ -56,4 +56,16 @@ public class RoomServiceImp implements RoomService {
         jsonObject.put("count", jsonArray.size());
     }
 
+    @Override
+    public List<Room> getListListRoomByExit(Integer exit) {
+        return roomMapper.selectRoomByExit(exit);
+    }
+
+    @Override
+    public JSONObject getListJSONObjectRoomByExit(Integer exit) {
+        List<Room> list = getListListRoomByExit(exit);
+        JSONArray jsonArray = JSONArray.parseArray(JSON.toJSONString(list));
+        formatJSON(jsonArray);
+        return jsonObject;
+    }
 }
