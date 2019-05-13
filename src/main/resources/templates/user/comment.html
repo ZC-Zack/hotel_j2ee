@@ -87,15 +87,20 @@
         });
         //监听行工具事件
         var table = layui.table;
+        var orderId;
         table.on('tool(noEvaluation)', function (obj) {
             var data = obj.data;
             //console.log(obj)
             if (obj.event === 'edit') {
+                orderId = data.orderId;
                 layer.prompt({
                     formType: 2
-                    ,value: data.email
                 }, function(value, index){
-                    alterComment(value);
+                    var jsonData = {
+                        "orderId" : orderId,
+                        "content" : value
+                    };
+                    alterComment(jsonData);
                     layer.close(index);
                 });
             }
@@ -103,18 +108,18 @@
     });
 </script>
 <script type="text/html" id="barDemo">
-    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-xs" lay-event="edit">评价</a>
 </script>
 <script>
-    function alterComment(value) {
+    function alterComment(jsonData) {
         $.ajax({
             url: "/user/updateComment",
             type: "POST",
+            contentType: "application/json;charset=utf-8",
             dataType: "json",
-            data: value,
+            data: JSON.stringify(jsonData),
             success: function (data) {
-                console.log(data);
-                console.log(value);
+                console.log(content);
             }
         })
     }
@@ -123,7 +128,7 @@
             url: "",
             type: "POST",
             dataType: "json",
-            data: value,
+            data: "content:" + value,
             success: function (data) {
                 console.log(data);
                 console.log(value);
