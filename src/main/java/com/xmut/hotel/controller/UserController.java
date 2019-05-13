@@ -29,7 +29,7 @@ public class UserController {
     //跳转预订房间页面
     @RequestMapping("/roomOrder")
     public String roomOrder(ModelMap map){
-        List<Room> list =  roomService.getListRoom();
+        List<Room> list =  roomService.getListRoomByGroup();
         map.addAttribute("roomList", list);
         return "user/roomOrder";
     }

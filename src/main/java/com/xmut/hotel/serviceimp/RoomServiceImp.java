@@ -24,6 +24,11 @@ public class RoomServiceImp implements RoomService {
         return roomMapper.selectAllRoom();
     }
 
+    @Override
+    public List<Room> getListRoomByGroup() {
+        return roomMapper.selectAllRoomByGroup();
+    }
+
     //获取所有房间信息的方法实现
     @Override
     public JSONObject getJSONObjectRoom() {

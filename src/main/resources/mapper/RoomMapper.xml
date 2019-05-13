@@ -12,4 +12,9 @@
   <select id="selectAllRoom" resultMap="BaseResultMap">
         select * from t_room
   </select>
+
+<!--  通过group by查询房间-->
+  <select id="selectAllRoomByGroup" resultMap="BaseResultMap">
+        select * from t_room group by room_name
+  </select>
 </mapper>
