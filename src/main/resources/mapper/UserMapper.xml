@@ -29,6 +29,10 @@
     </trim>
   </insert>
 
+  <select id="getAllUser" resultType="com.xmut.hotel.entity.User">
+      select * from t_user
+  </select>
+
   <!--用户登录验证-->
   <select id="userlogin" parameterType="com.xmut.hotel.entity.User" resultType="com.xmut.hotel.entity.User">
       SELECT username,password FROM t_user WHERE username = #{username} AND password = #{password}

@@ -14,6 +14,8 @@ public interface UserMapper {
     int insert(User record);
 
     int insertSelective(User record);
+
+    List<User> getAllUser();
     //用户登录
     User userlogin(@Param("username") String username, @Param("password") String password);
 

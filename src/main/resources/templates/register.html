@@ -10,7 +10,32 @@
     <script src="/webjars/layui/2.4.5/layui.js"></script>
 
 </head>
+<script>
+    function fun() {
 
+        /* 失去焦点  */
+        alert("账号已注册过0");
+        var xmlhttp;
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        var vas = document.getElementById("username").value;
+        xmlhttp.onreadystatechange=connect;
+        function connect()  {
+
+            var data;
+            data = xmlhttp.responseText;
+            var dataOjb = eval("(" + data + ")");
+            if (dataOjb == "0") {
+                alert("账号已注册过");
+            }
+        };
+        xmlhttp.open("get", "judge?username=" + vas, true);
+        xmlhttp.send();
+    }
+</script>
 <body>
 <form action="/uregister" method="post">
     <div class="head">酒&nbsp店&nbsp管&nbsp理&nbsp系&nbsp统</div>
@@ -22,7 +47,7 @@
                 <i class="layui-icon layui-icon-username" style="font-size: 20px;color:white;"></i>
             </div>
             <div class="register-name-line"></div>
-            <input class="name-input" id="name" name="username" type="text" placeholder="请输入用户名">
+            <input class="name-input" id="username" name="username" type="text" placeholder="请输入用户名" onblur="fun();">
         </div>
         <div class="register-password-content">
             <div class="register-password-logle">
