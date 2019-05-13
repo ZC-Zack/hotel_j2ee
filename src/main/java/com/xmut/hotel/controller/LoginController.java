@@ -62,19 +62,18 @@ public class LoginController {
     public String addUser(@RequestParam("username") String username,
                           @RequestParam("password") String password,
                           @RequestParam("password2") String password2){
+        String judge="1";
 
-        if(!password.equals(password2)){
-
+        int res = loginService.adduser(username,password);
+        if(res == 0){
+            judge="0";
+            System.out.println(judge);
+            return "已被注册！";
+        }else if(!password.equals(password2)){
             return "两次密码不相同，注册失败！！";
         }else {
-            int res = loginService.adduser(username,password);
-            if(res == 0){
-                return "注册失败！";
-            }else {
                 return "注册成功！";
             }
-        }
-
     }
 
 }
