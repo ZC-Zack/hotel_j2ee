@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 @Controller
@@ -23,7 +24,7 @@ public class LoginController {
      * 跳转到用户登录页面
      * @return 登录页面
      */
-    @RequestMapping("/loginHtml")
+    @RequestMapping("/login")
     public String loginHtml(){
         return "login";
     }
@@ -40,17 +41,18 @@ public class LoginController {
      * 获取用户名与密码，用户登录
      * @return 登录成功页面
      */
-    @RequestMapping("/login")
-    public String userLogin(@RequestParam("username") String username, @RequestParam("password") String password, HttpServletRequest request){
+    @RequestMapping("/loginCheck")
+    public ModelAndView userLogin(@RequestParam("username") String username, @RequestParam("password") String password, HttpServletRequest request){
 
-        User user = loginService.userLogin(username,password);
-
-        if(user != null){                                                  //登录成功
-            request.getSession().setAttribute("sessio" +
-                    "n_user",user);     //将用户信息放入session
-            return "user/admin";
-        }
-        return "loginError";
+//        User user = loginService.userLogin(username,password);
+        request.getSession().setAttribute("username", username);
+//        if(user != null){                                                  //登录成功
+//            request.getSession().setAttribute("sessio" +
+//                    "n_user",user);     //将用户信息放入session
+//            return "user/admin";
+//        }
+//        return "loginError";
+        return new ModelAndView("redirect:/user/roomOrder");
     }
 
     /**
