@@ -19,7 +19,13 @@
   </select>
 
 <!--  通过房间是否被预订查找-->
-  <select id="selectRoomByExit" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <select id="selectRoomByExit" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select * from t_room where room_exit=#{roomExit,jdbcType=INTEGER}
-  </select>
+    </select>
+
+<!--    查找通过房间ID查找房间-->
+    <select id="selectRoomById" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select * from t_room where room_id=#{roomId,jdbcType=VARCHAR}
+    </select>
+
 </mapper>

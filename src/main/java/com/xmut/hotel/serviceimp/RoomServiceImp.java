@@ -68,4 +68,9 @@ public class RoomServiceImp implements RoomService {
         formatJSON(jsonArray);
         return jsonObject;
     }
+
+    @Override
+    public Room getRoomById(String roomId) {
+        return roomMapper.selectRoomById(roomId);
+    }
 }

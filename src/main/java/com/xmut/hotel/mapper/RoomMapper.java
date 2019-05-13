@@ -13,4 +13,7 @@ public interface RoomMapper {
 
     //通过房间是否被预订进行查询
     List<Room> selectRoomByExit(Integer commentExit);
+
+    //通过房间Id查找房间
+    Room selectRoomById(String roomId);
 }

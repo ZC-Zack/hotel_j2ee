@@ -28,7 +28,7 @@
     <div class="layui-layout-body">
         <table >
             <tr th:each="room:${roomList}">
-                <a href="" th:text="${room.roomName}"></a>
+                <a th:href="@{roomScan(roomId=${room.roomId})}" th:text="${room.roomName}"></a>
 
                 <span th:text="${room.roomPrice}"></span>
                 <hr class="layui-bg-green">

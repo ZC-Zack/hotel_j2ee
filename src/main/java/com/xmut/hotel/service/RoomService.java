@@ -25,4 +25,7 @@ public interface RoomService {
 
     //查找房间信息通过Exit,返回JSON合集
     JSONObject getListJSONObjectRoomByExit(Integer exit);
+
+    //通过房间Id查找房间
+    Room getRoomById(String roomId);
 }
