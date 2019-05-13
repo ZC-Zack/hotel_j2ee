@@ -40,7 +40,7 @@ public class LoginController {
      * 获取用户名与密码，用户登录
      * @return 登录成功页面
      */
-    @RequestMapping("/userLogin")
+    @RequestMapping("/login")
     public String userLogin(@RequestParam("username") String username, @RequestParam("password") String password, HttpServletRequest request){
 
         User user = loginService.userLogin(username,password);
@@ -58,7 +58,7 @@ public class LoginController {
      * @return 注册结果
      */
     @ResponseBody
-    @RequestMapping(value = {"/uregister"})
+    @RequestMapping(value = {"/register"})
     public String addUser(@RequestParam("username") String username,
                           @RequestParam("password") String password,
                           @RequestParam("password2") String password2){
