@@ -28,4 +28,8 @@
         select * from t_room where room_id=#{roomId,jdbcType=VARCHAR}
     </select>
 
+<!--    释放房间-->
+    <update id="updateRoomUsedById" parameterType="Room">
+        update t_room set room_exit=#{roomExit,jdbcType=INTEGER} where room_id=#{roomId,jdbcType=VARCHAR}
+    </update>
 </mapper>

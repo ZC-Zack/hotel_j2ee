@@ -28,4 +28,7 @@ public interface RoomService {
 
     //通过房间Id查找房间
     Room getRoomById(String roomId);
+
+    //修改房间是否被占用
+    int updateRoomUsedById(String roomId, Integer roomExit);
 }

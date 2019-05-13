@@ -2,6 +2,7 @@ package com.xmut.hotel.mapper;
 
 import com.xmut.hotel.entity.Room;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface RoomMapper {
@@ -16,4 +17,7 @@ public interface RoomMapper {
 
     //通过房间Id查找房间
     Room selectRoomById(String roomId);
+
+    //通过roomId修改房间exit
+    int updateRoomUsedById(Room room);
 }

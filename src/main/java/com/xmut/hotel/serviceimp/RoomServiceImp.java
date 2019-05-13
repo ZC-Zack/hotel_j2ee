@@ -9,6 +9,7 @@ import com.xmut.hotel.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -72,5 +73,13 @@ public class RoomServiceImp implements RoomService {
     @Override
     public Room getRoomById(String roomId) {
         return roomMapper.selectRoomById(roomId);
+    }
+
+    @Override
+    public int updateRoomUsedById(String roomId, Integer roomExit) {
+        Room room = new Room();
+        room.setRoomId(roomId);
+        room.setRoomExit(roomExit);
+        return roomMapper.updateRoomUsedById(room);
     }
 }
