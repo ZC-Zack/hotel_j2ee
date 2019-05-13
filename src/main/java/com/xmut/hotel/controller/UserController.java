@@ -1,5 +1,6 @@
 package com.xmut.hotel.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.xmut.hotel.entity.Room;
 import com.xmut.hotel.service.CommentService;
 import com.xmut.hotel.service.RoomService;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -36,17 +38,25 @@ public class UserController {
     }
 
     //跳转订单页面
-    @RequestMapping("orderSet")
+    @RequestMapping("/orderSet")
     public String orderSet(){
         return "user/orderSet";
     }
 
     //房间详情
-    @RequestMapping("roomScan")
+    @RequestMapping("/roomScan")
     public String roomScan(ModelMap map, @RequestParam String roomId){
         Room room = roomService.getRoomById(roomId);
         map.addAttribute("room", room);
         //System.out.println(room);
         return "user/roomScan";
     }
+
+    @RequestMapping("/userOrder")
+    public String userOrder(){
+        return "user/userOrder";
+    }
+
+
+
 }
