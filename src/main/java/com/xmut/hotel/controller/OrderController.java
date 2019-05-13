@@ -26,7 +26,6 @@ public class OrderController {
     @RequestMapping("/unCompleteOrder")
     @ResponseBody
     public JSONObject getUnCompleteOrder(){
-        System.out.println(orderService.getJSONObjectOrderByExit(0).toJSONString());
         return orderService.getJSONObjectOrderByExit(0);
     }
 }

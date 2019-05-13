@@ -57,6 +57,9 @@ public class UserController {
         return "user/userOrder";
     }
 
-
+    @RequestMapping("/apply")
+    public String apply(){
+        return "user/apply";
+    }
 
 }

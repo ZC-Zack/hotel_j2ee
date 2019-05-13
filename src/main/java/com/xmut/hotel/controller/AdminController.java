@@ -66,4 +66,16 @@ public class AdminController {
     public String unCompleteOrder(){
         return "admin/unCompleteOrder";
     }
+
+    //员工页面
+    @RequestMapping("/employee")
+    public String employee(){
+        return "admin/employee";
+    }
+
+    //员工申请页面
+    @RequestMapping("/apply")
+    public String apply(){
+        return "admin/apply";
+    }
 }
