@@ -26,6 +26,7 @@ public class UserController {
         return "user/comment";
     }
 
+    //跳转预订房间页面
     @RequestMapping("/roomOrder")
     public String roomOrder(ModelMap map){
         List<Room> list =  roomService.getListRoom();
@@ -33,4 +34,9 @@ public class UserController {
         return "user/roomOrder";
     }
 
+    //跳转订单页面
+    @RequestMapping("orderSet")
+    public String orderSet(){
+        return "user/orderSet";
+    }
 }
