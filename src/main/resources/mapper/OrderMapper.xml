@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xmut.hotel.mapper.OrderMapper">
+  <resultMap id="BaseResultMap" type="com.xmut.hotel.entity.Order">
+    <id column="order_id" jdbcType="VARCHAR" property="orderId" />
+    <result column="room_id" jdbcType="VARCHAR" property="roomId" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+    <result column="price" jdbcType="INTEGER" property="price" />
+    <result column="in_date" jdbcType="VARCHAR" property="inDate" />
+    <result column="out_date" jdbcType="VARCHAR" property="outDate" />
+    <result column="used_exit" jdbcType="INTEGER" property="usedExit" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    order_id, room_id, username, name, telephone, price, in_date, out_date, used_exit
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_order
+    where order_id = #{orderId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_order
+    where order_id = #{orderId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xmut.hotel.entity.Order">
+    insert into t_order (order_id, room_id, username, 
+      name, telephone, price, 
+      in_date, out_date, used_exit
+      )
+    values (#{orderId,jdbcType=VARCHAR}, #{roomId,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, #{price,jdbcType=INTEGER}, 
+      #{inDate,jdbcType=VARCHAR}, #{outDate,jdbcType=VARCHAR}, #{usedExit,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xmut.hotel.entity.Order">
+    insert into t_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="roomId != null">
+        room_id,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="telephone != null">
+        telephone,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="inDate != null">
+        in_date,
+      </if>
+      <if test="outDate != null">
+        out_date,
+      </if>
+      <if test="usedExit != null">
+        used_exit,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="roomId != null">
+        #{roomId,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=INTEGER},
+      </if>
+      <if test="inDate != null">
+        #{inDate,jdbcType=VARCHAR},
+      </if>
+      <if test="outDate != null">
+        #{outDate,jdbcType=VARCHAR},
+      </if>
+      <if test="usedExit != null">
+        #{usedExit,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xmut.hotel.entity.Order">
+    update t_order
+    <set>
+      <if test="roomId != null">
+        room_id = #{roomId,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=INTEGER},
+      </if>
+      <if test="inDate != null">
+        in_date = #{inDate,jdbcType=VARCHAR},
+      </if>
+      <if test="outDate != null">
+        out_date = #{outDate,jdbcType=VARCHAR},
+      </if>
+      <if test="usedExit != null">
+        used_exit = #{usedExit,jdbcType=INTEGER},
+      </if>
+    </set>
+    where order_id = #{orderId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xmut.hotel.entity.Order">
+    update t_order
+    set room_id = #{roomId,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      price = #{price,jdbcType=INTEGER},
+      in_date = #{inDate,jdbcType=VARCHAR},
+      out_date = #{outDate,jdbcType=VARCHAR},
+      used_exit = #{usedExit,jdbcType=INTEGER}
+    where order_id = #{orderId,jdbcType=VARCHAR}
+  </update>
+</mapper>
