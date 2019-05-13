@@ -54,4 +54,16 @@ public class AdminController {
     public JSONObject getRoomEmpty(){
         return roomService.getListJSONObjectRoomByExit(0);
     }
+
+    //完成订单页面
+    @RequestMapping("/completeOrder")
+    public String completeOrder(){
+        return "admin/completeOrder";
+    }
+
+    //未完成订单页面
+    @RequestMapping("/unCompleteOrder")
+    public String unCompleteOrder(){
+        return "admin/unCompleteOrder";
+    }
 }

@@ -54,8 +54,8 @@
                 <li class="layui-nav-item">
                     <a href="javascript:;">订单信息</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">未完成订单</a></dd>
-                        <dd><a href="javascript:;">已完成订单</a></dd>
+                        <dd><a href="unCompleteOrder">未完成订单</a></dd>
+                        <dd><a href="completeOrder">已完成订单</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item"><a href="">数据图表</a></li>
@@ -77,6 +77,13 @@
 </div>
 <script src="../webjars/layui/2.4.5/layui.js"></script>
 <script>
+    //JavaScript代码区域
+    layui.use('element', function(){
+        var element = layui.element;
+
+    });
+</script>
+<script>
     layui.use('table', function(){
         var table = layui.table;
 
@@ -86,10 +93,10 @@
             ,url: '/admin/getAllRoom' //数据接口
             ,cols: [
                 [ //表头
-                {field: 'roomId', title: '房间号', width:120, sort: true, fixed: 'left'}
-                ,{field: 'roomName', title: '房间名', width:200}
-                ,{field: 'roomPrice', title: '价钱', width:80}
-                ,{field: 'roomExit', title: '房间是否有人预定', width:80}
+                    {field: 'roomId', title: '房间号', width:120, sort: true, fixed: 'left'}
+                    ,{field: 'roomName', title: '房间名', width:200}
+                    ,{field: 'roomPrice', title: '价钱', width:80}
+                    ,{field: 'roomExit', title: '房间是否有人预定', width:80}
                 ]
             ]
         });
