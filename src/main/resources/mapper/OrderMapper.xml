@@ -142,4 +142,14 @@
   <select id="selectOrderByExit" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select * from t_order where used_exit=#{usedExit,jdbcType=INTEGER}
   </select>
+
+<!--  插入订单-->
+  <insert id="insertOrder" parameterType="com.xmut.hotel.entity.Order">
+        insert into t_order values(#{orderId,jdbcType=VARCHAR}, #{roomId,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, #{price,jdbcType=INTEGER}, #{inDate,jdbcType=VARCHAR}, #{outDate,jdbcType=VARCHAR}, #{usedExit,jdbcType=INTEGER})
+  </insert>
+
+<!--  查找最后一条记录-->
+  <select id="selectLastId" resultType="java.lang.String">
+        select order_id from t_order order by order_id desc limit 1;
+  </select>
 </mapper>

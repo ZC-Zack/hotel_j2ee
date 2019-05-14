@@ -31,4 +31,7 @@ public interface RoomService {
 
     //修改房间是否被占用
     int updateRoomUsedById(String roomId, Integer roomExit);
+
+    //查找空房间Id
+    List<String> getRoomByName(String roomName);
 }

@@ -19,4 +19,10 @@ public interface OrderMapper {
 
     //通过exit查找订单信息
     List<Order> selectOrderByExit(Integer usedExit);
+
+    //插入订单
+    int insertOrder(Order order);
+
+    //查找最后一个订单号
+    String selectLastId();
 }

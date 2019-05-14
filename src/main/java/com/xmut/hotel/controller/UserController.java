@@ -7,9 +7,11 @@ import com.xmut.hotel.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -39,8 +41,11 @@ public class UserController {
 
     //跳转订单页面
     @RequestMapping("/orderSet")
-    public String orderSet(){
-        return "user/orderSet";
+    public String orderSet(ModelMap map, @RequestParam String roomName){
+        map.addAttribute("roomName", roomName);
+        map.addAttribute("roomId", roomService.getRoomByName(roomName).get(0));
+        //return new ModelAndView("redirect:/user/orderSet");
+        return "/user/orderSet";
     }
 
     //房间详情

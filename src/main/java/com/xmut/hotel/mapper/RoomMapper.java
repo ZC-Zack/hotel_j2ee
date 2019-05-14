@@ -20,4 +20,7 @@ public interface RoomMapper {
 
     //通过roomId修改房间exit
     int updateRoomUsedById(Room room);
+
+    //查找空房间号
+    List<String> selectRoomByName(String roomName);
 }

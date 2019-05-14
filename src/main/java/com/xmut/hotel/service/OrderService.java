@@ -14,6 +14,9 @@ public interface OrderService {
     //通过exit来返回JSONObject
     JSONObject getJSONObjectOrderByExit(Integer usedExit);
 
+    //生成订单
+    int setOrder(JSONObject jsonObject);
+
     //格式转换，格式转换成layui表格要求的格式
     void formatJSON(JSONArray jsonArray);
 }

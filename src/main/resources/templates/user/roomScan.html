@@ -10,12 +10,12 @@
 <div class="layui-layout">
 
     <div class="layui-layout-body">
-        <span th:text="${room.roomName}"></span>
+        <span th:text="${room.roomName}" id="roomName"></span>
         <br>
         价钱<span th:text="${room.roomPrice}"></span>
         <br>
         <button class="layui-btn" id="orderBtn">立即预订</button>
-        <a href="roomOrder"><button class="layui-btn">返回</button></a>
+        <a th:href="roomOrder"><button class="layui-btn">返回</button></a>
     </div>
 </div>
 <script src="../webjars/layui/2.4.5/layui.js"></script>
@@ -39,7 +39,6 @@
     //Demo
     layui.use('form', function(){
         var form = layui.form;
-
         //监听提交
         form.on('submit(formDemo)', function(data){
             layer.msg(JSON.stringify(data.field));
@@ -49,7 +48,33 @@
 </script>
 <script>
     $('#orderBtn').click(function () {
-        alert("没有空房间")
+        var roomName = $('#roomName').text();
+        var jsonData = {
+            "roomName":roomName
+        };
+        $.ajax({
+            url: "/user/getRoomByName",
+            type: "POST",
+            contentType: "application/json;charset=utf-8",
+            dataType: "text",
+            data: JSON.stringify(jsonData),
+            success: function (data) {
+                if(data == 0){
+                    alert("没有空房间");
+                }else{
+                    window.location.href = "/user/orderSet?roomName=" + roomName;
+                }
+                // $.ajax({
+                //     url: "/user/orderSet",
+                //     type: "POST",
+                //     contentType: "application/json;charset=utf-8",
+                //     data: JSON.stringify(jsonData),
+                //     success: function (data) {
+                //
+                //     }
+                // });
+            }
+        })
     });
 </script>
 </body>

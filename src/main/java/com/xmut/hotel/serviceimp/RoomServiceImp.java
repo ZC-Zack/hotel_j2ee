@@ -82,4 +82,9 @@ public class RoomServiceImp implements RoomService {
         room.setRoomExit(roomExit);
         return roomMapper.updateRoomUsedById(room);
     }
+
+    @Override
+    public List<String> getRoomByName(String roomName) {
+        return roomMapper.selectRoomByName(roomName);
+    }
 }

@@ -10,30 +10,30 @@
 <div class="layui-layout">
 
     <div class="layui-layout-body">
-        <form class="layui-form" action="">
+        <form class="layui-form" action="/user/setOrderTable" method="post">
             <div class="layui-form-item">
                 <label class="layui-form-label">房间名</label>
                 <div class="layui-input-inline">
-                    <input type="text" disabled name="roomName"  class="layui-input">
+                    <input type="text" disabled name="roomName"  class="layui-input" th:placeholder="${roomName}">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">房间号</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="roomId" disabled  class="layui-input">
+                    <input type="text" name="roomId" disabled  class="layui-input" th:placeholder="${roomId}">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">入住时间</label>
                 <div class="layui-input-inline">
                     <div class="layui-input-inline">
-                        <input type="text" name="date" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                        <input type="text" name="inDate" id="inDate" lay-verify="inDate" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <label class="layui-form-label">离店时间</label>
                 <div class="layui-input-inline">
                     <div class="layui-input-inline">
-                        <input type="text" name="date" id="date1" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                        <input type="text" name="outDate" id="outDate" lay-verify="outDate" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
                     </div>
                 </div>
             </div>
@@ -51,14 +51,15 @@
             </div>
             <div class="layui-form-item">
                 <div class="layui-input-block">
-                    <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                    <button class="layui-btn" lay-submit="" lay-filter="formDemo" id="submitBtn">立即提交</button>
                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
             </div>
         </form>
     </div>
 </div>
-<script src="../webjars/layui/2.4.5/layui.js"></script>
+<script src="../webjars/layui/2.4.5/layui.all.js"></script>
+<script src="../webjars/jquery/1.11.1/jquery.js"></script>
 <script>
     layui.use(['form', 'layedit', 'laydate'], function() {
         var form = layui.form
@@ -67,10 +68,10 @@
             , laydate = layui.laydate;
         //日期
         laydate.render({
-            elem: '#date'
+            elem: '#inDate'
         });
         laydate.render({
-            elem: '#date1'
+            elem: '#outDate'
         });
     });
 </script>
@@ -78,11 +79,26 @@
     //Demo
     layui.use('form', function(){
         var form = layui.form;
-
+        var value = {
+          "test":12312
+        };
         //监听提交
         form.on('submit(formDemo)', function(data){
-            layer.msg(JSON.stringify(data.field));
-            return false;
+            $.ajax({
+                url: "/user/setOrderTable",
+                type:"POST",
+                contentType: "application/json;charset=UTF-8",
+                dataType: "json",
+                data: JSON.stringify(data.field),
+                success: function (data) {
+                    if(0 == data){
+                        layer.alert("下单失败！");
+                        return false;
+                    }else {
+                        window.location.href = "/user/userOrder";
+                    }
+                }
+            });
         });
     });
 </script>

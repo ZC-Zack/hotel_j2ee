@@ -32,6 +32,16 @@ public class OrderServiceImp implements OrderService {
         return jsonObject;
     }
 
+    @Override
+    public int setOrder(JSONObject jsonObject) {
+        Order order = JSON.toJavaObject(jsonObject, Order.class);
+        String orderId = orderMapper.selectLastId();
+        orderId = String.format("%04d", Integer.parseInt(orderId) + 1);
+        order.setOrderId(orderId);
+        order.setUsedExit(0);
+        return orderMapper.insertOrder(order);
+    }
+
     //格式化信息
     @Override
     public void formatJSON(JSONArray jsonArray) {
