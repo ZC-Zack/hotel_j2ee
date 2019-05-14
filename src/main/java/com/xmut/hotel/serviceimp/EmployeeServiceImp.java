@@ -76,6 +76,11 @@ public class EmployeeServiceImp implements EmployeeService {
         return result;
     }
 
+    @Override
+    public int deleteEmployeeById(String employeeId) {
+        return employeeMapper.deleteEmployeeById(employeeId);
+    }
+
     //格式化信息
     @Override
     public void formatJSON(JSONArray jsonArray) {

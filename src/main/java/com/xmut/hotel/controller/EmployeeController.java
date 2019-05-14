@@ -37,4 +37,11 @@ public class EmployeeController {
     public int setApply(@RequestBody JSONObject jsonObject){
         return employeeService.updateApply(jsonObject);
     }
+
+    //删除员工
+    @RequestMapping("/delEmployee")
+    @ResponseBody
+    public int delEmployee(@RequestBody JSONObject jsonObject){
+        return employeeService.deleteEmployeeById(jsonObject.getString("employeeId"));
+    }
 }

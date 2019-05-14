@@ -22,5 +22,9 @@ public interface EmployeeMapper {
     //插入员工数据
     int insertEmployee(Employee employee);
 
+    //选择最后一个员工工号
     String selectLastId();
+
+    //删除员工通过id
+    int deleteEmployeeById(String employeeId);
 }

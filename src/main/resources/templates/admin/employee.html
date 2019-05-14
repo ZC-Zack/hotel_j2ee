@@ -82,7 +82,8 @@
         © 后台系统
     </div>
 </div>
-<script src="../webjars/layui/2.4.5/layui.js"></script>
+<script src="../webjars/layui/2.4.5/layui.all.js"></script>
+<script src="../webjars/jquery/1.11.1/jquery.js"></script>
 <script>
     //JavaScript代码区域
     layui.use('element', function(){
@@ -111,28 +112,52 @@
         });
         //监听行工具事件
         var result;
-        table.on('tool(roomUsed)', function (obj) {
+        table.on('tool(employee)', function (obj) {
             var data = obj.data;
             //console.log(obj)
             roomId = data.roomId;
             if (obj.event === 'add') {
-                layer.confirm('确定通过吗？', function(index){
-                    updateEmployee(index);
+                layer.prompt({
+                    formType: 2
+                    ,title: "增加薪水"
+                    ,value: data.salary
+                }, function(value, index) {
                     layer.close(index);
+
+                    //这里一般是发送修改的Ajax请求
+
+                    //同步更新表格和缓存对应的值
+                    obj.update({
+                        salary: value
+                    });
                 });
             }else if(obj.event == "del"){
-                layer.confirm('确定不通过吗？', function(index){
+                layer.confirm('确定解雇该员工吗？', function(index){
                     if(index == 1){
-                        updateEmployee(index)
+                        var result = {
+                          "employeeId":data.employeeId
+                        };
+                        updateEmployee(result);
                     }
                     layer.close(index);
                 });
             }
         });
+        function updateEmployee(result) {
+            $.ajax({
+                url: "/admin/delEmployee",
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                dataType: "text",
+                data: JSON.stringify(result),
+                success: function (data) {
+                    layer.alert("操作成功！");
+                    table.reload('employee');
+                }
+            });
+        }
     });
-    function updateEmployee(pass) {
 
-    }
 </script>
 <script type="text/html" id="barDemo">
     <a class="layui-btn layui-btn-xs" lay-event="add">加薪</a>

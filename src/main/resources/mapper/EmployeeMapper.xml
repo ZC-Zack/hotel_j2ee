@@ -104,4 +104,8 @@
   <select id="selectLastId" resultType="java.lang.String">
         select employee_id from t_employee order by employee_id desc limit 1;
   </select>
+<!--  删除员工-->
+  <delete id="deleteEmployeeById" parameterType="java.lang.String">
+        delete from t_employee where employee_id=#{employeeId,jdbcType=VARCHAR}
+  </delete>
 </mapper>
