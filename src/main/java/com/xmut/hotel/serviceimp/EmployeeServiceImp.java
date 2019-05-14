@@ -70,6 +70,7 @@ public class EmployeeServiceImp implements EmployeeService {
             String employeeId = employeeMapper.selectLastId();
             employeeId = String.format("%02d", Integer.parseInt(employeeId) + 1);
             employee.setEmployeeId(employeeId);
+            employee.setSalary(2000);
             result = employeeMapper.insertEmployee(employee);
         }
         return result;
