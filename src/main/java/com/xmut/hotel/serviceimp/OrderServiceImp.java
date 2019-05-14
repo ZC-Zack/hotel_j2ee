@@ -57,6 +57,12 @@ public class OrderServiceImp implements OrderService {
         return orderMapper.insertOrder(order);
     }
 
+    @Override
+    public int cancelOrder(JSONObject jsonObject) {
+        Order order = JSON.toJavaObject(jsonObject, Order.class);
+        return orderMapper.updateUsedById(order);
+    }
+
     //格式化信息
     @Override
     public void formatJSON(JSONArray jsonArray) {

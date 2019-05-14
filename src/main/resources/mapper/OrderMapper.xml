@@ -152,4 +152,9 @@
   <select id="selectLastId" resultType="java.lang.String">
         select order_id from t_order order by order_id desc limit 1;
   </select>
+
+<!--  通过id修改订单used-->
+  <update id="updateUsedById" parameterType="Order">
+        update t_order set used_exit=#{usedExit,jdbcType=INTEGER} where order_id=#{orderId,jdbcType=VARCHAR}
+  </update>
 </mapper>

@@ -51,4 +51,11 @@ public class OrderController {
     public int setOrderTable(@RequestBody JSONObject jsonObject){
         return orderService.setOrder(jsonObject);
     }
+
+    //取消订单
+    @RequestMapping(value = "/cancelOrder",method = RequestMethod.POST)
+    @ResponseBody
+    public int cancelOrder(@RequestBody JSONObject jsonObject){
+        return orderService.cancelOrder(jsonObject);
+    }
 }

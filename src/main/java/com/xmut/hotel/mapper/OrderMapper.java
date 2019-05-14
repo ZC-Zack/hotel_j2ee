@@ -28,6 +28,6 @@ public interface OrderMapper {
     String selectLastId();
 
     //修改pass 数据通过id
-    int updateApplyPassById(Apply apply);
+    int updateUsedById(Order order);
 
 }
