@@ -73,7 +73,7 @@
     <div class="layui-body">
         <!-- 内容主体区域 -->
         <div style="padding: 15px;">
-            <table id="roomEmpty" lay-filter="roomEmpty"></table>
+            <table id="employee" lay-filter="employee"></table>
         </div>
     </div>
 
@@ -96,13 +96,15 @@
 
         //第一个实例
         table.render({
-            elem: '#roomEmpty'
-            ,url: '/admin/empty' //数据接口
+            elem: '#employee'
+            ,url: '/admin/getEmployee' //数据接口
             ,cols: [
                 [ //表头
-                    {field: 'roomId', title: '房间号', width:120, sort: true, fixed: 'left'}
-                    ,{field: 'roomName', title: '房间名', width:200}
-                    ,{field: 'roomPrice', title: '价钱', width:80}
+                    {field: 'employeeId', title: '员工号', width:120, sort: true, fixed: 'left'}
+                    ,{field: 'name', title: '姓名', width:200}
+                    ,{field: 'sex', title: '性别', width:80}
+                    ,{field: 'telephone', title: '电话', width:80}
+                    ,{field: 'salary', title: '薪水', width:80}
                 ]
             ]
         });

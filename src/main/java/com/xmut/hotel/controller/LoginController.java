@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 @Controller
 
 @RequestMapping("/")
@@ -19,6 +21,9 @@ public class LoginController {
      */
     @Autowired
     private LoginService loginService;
+
+    @Autowired
+    private HttpSession session;
 
     /**
      * 跳转到用户登录页面
@@ -45,7 +50,8 @@ public class LoginController {
     public ModelAndView userLogin(@RequestParam("username") String username, @RequestParam("password") String password, HttpServletRequest request){
 
 //        User user = loginService.userLogin(username,password);
-        request.getSession().setAttribute("username", username);
+        session.setAttribute("username", username);
+        System.out.println(username);
 //        if(user != null){                                                  //登录成功
 //            request.getSession().setAttribute("sessio" +
 //                    "n_user",user);     //将用户信息放入session

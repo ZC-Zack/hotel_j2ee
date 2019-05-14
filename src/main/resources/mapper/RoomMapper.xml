@@ -32,7 +32,7 @@
         select * from t_room where room_id=#{roomId,jdbcType=VARCHAR}
     </select>
 
-<!--    释放房间-->
+<!--    释放或者使用房间房间-->
     <update id="updateRoomUsedById" parameterType="Room">
         update t_room set room_exit=#{roomExit,jdbcType=INTEGER} where room_id=#{roomId,jdbcType=VARCHAR}
     </update>
@@ -41,4 +41,6 @@
     <select id="selectRoomByName" parameterType="java.lang.String" resultMap="RoomIdMap">
         select room_id from t_room where room_name=#{roomName,jdbcType=VARCHAR} and room_exit=#{0, jdbcType=INTEGER}
     </select>
+
+
 </mapper>

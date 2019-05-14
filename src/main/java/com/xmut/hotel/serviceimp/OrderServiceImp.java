@@ -4,11 +4,15 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.xmut.hotel.entity.Order;
+import com.xmut.hotel.entity.Room;
 import com.xmut.hotel.mapper.OrderMapper;
+import com.xmut.hotel.mapper.RoomMapper;
 import com.xmut.hotel.service.OrderService;
+import com.xmut.hotel.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Service
@@ -16,6 +20,12 @@ public class OrderServiceImp implements OrderService {
 
     @Autowired
     private OrderMapper orderMapper;
+
+    @Autowired
+    private HttpSession session;
+
+    @Autowired
+    private RoomMapper roomMapper;
 
     private JSONObject jsonObject;
 
@@ -38,7 +48,12 @@ public class OrderServiceImp implements OrderService {
         String orderId = orderMapper.selectLastId();
         orderId = String.format("%04d", Integer.parseInt(orderId) + 1);
         order.setOrderId(orderId);
+        order.setUsername((String) session.getAttribute("username"));
         order.setUsedExit(0);
+        Room room = new Room();
+        room.setRoomId(jsonObject.getString("roomId"));
+        room.setRoomExit(1);
+        roomMapper.updateRoomUsedById(room);
         return orderMapper.insertOrder(order);
     }
 

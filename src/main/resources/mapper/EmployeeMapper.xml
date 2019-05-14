@@ -90,4 +90,9 @@
       salary = #{salary,jdbcType=INTEGER}
     where employee_id = #{employeeId,jdbcType=VARCHAR}
   </update>
+
+<!--  获取全部员工数据-->
+  <select id="selectAllEmployee" resultMap="BaseResultMap">
+    select * from t_employee
+  </select>
 </mapper>

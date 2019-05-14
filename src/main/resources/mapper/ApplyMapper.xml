@@ -90,4 +90,9 @@
       pass = #{pass,jdbcType=INTEGER}
     where apply_id = #{applyId,jdbcType=VARCHAR}
   </update>
+
+<!--  通过pass获取申请表-->
+  <select id="selectApplyByPass" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select * from t_apply where pass=#{pass,jdbcType=INTEGER}
+  </select>
 </mapper>
