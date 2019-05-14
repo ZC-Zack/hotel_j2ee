@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -32,9 +33,9 @@ public class EmployeeController {
     }
 
     //处理员工审核结果
-    @RequestMapping("/setApply")
+    @RequestMapping("/updateApply")
     @ResponseBody
-    public int setApply(@RequestBody JSONObject jsonObject){
+    public int updateApply(@RequestBody JSONObject jsonObject){
         return employeeService.updateApply(jsonObject);
     }
 
@@ -43,5 +44,12 @@ public class EmployeeController {
     @ResponseBody
     public int delEmployee(@RequestBody JSONObject jsonObject){
         return employeeService.deleteEmployeeById(jsonObject.getString("employeeId"));
+    }
+
+    //添加员工申请表
+    @RequestMapping(value = "/setApply", method = RequestMethod.POST)
+    @ResponseBody
+    public int setApply(@RequestBody JSONObject jsonObject){
+        return employeeService.setApply(jsonObject);
     }
 }

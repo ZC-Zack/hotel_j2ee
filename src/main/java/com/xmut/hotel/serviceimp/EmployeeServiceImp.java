@@ -81,6 +81,16 @@ public class EmployeeServiceImp implements EmployeeService {
         return employeeMapper.deleteEmployeeById(employeeId);
     }
 
+    @Override
+    public int setApply(JSONObject jsonObject) {
+        Apply apply = JSON.toJavaObject(jsonObject,Apply.class);
+        String applyId = applyMapper.selectLastId();
+        applyId = String.format("%02d", Integer.parseInt(applyId) + 1);
+        apply.setPass(0);
+        apply.setApplyId(applyId);
+        return applyMapper.insertApply(apply);
+    }
+
     //格式化信息
     @Override
     public void formatJSON(JSONArray jsonArray) {

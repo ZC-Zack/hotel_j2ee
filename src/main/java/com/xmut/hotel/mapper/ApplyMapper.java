@@ -20,5 +20,11 @@ public interface ApplyMapper {
     //获取所有的申请表通过Pass
     List<Apply> selectApplyByPass(Integer pass);
 
+    //选择最后一个员工工号
+    String selectLastId();
+
+    //插入新的申请
+    int insertApply(Apply apply);
+
     int updateApplyPassById(Apply apply);
 }

@@ -33,6 +33,9 @@ public interface EmployeeService {
     //删除员工
     int deleteEmployeeById(String employeeId);
 
+    //插入新的申请表
+    int setApply(JSONObject jsonObject);
+
     //格式转换，格式转换成layui表格要求的格式
     void formatJSON(JSONArray jsonArray);
 

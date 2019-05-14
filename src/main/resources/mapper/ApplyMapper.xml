@@ -100,4 +100,14 @@
   <update id="updateApplyPassById" parameterType="Apply">
         update t_apply set pass=#{pass,jdbcType=INTEGER} where apply_id=#{applyId,jdbcType=VARCHAR}
   </update>
+
+  <!--  查找最后一条记录-->
+  <select id="selectLastId" resultType="java.lang.String">
+        select apply_id from t_apply order by apply_id desc limit 1
+  </select>
+
+<!--  插入新的员工申请表-->
+  <insert id="insertApply" parameterType="Apply">
+        insert into t_apply values(#{applyId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, #{pass,jdbcType=INTEGER})
+  </insert>
 </mapper>
