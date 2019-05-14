@@ -60,6 +60,21 @@ public class EmployeeServiceImp implements EmployeeService {
         return jsonObject;
     }
 
+    @Override
+    public int updateApply(JSONObject jsonObject) {
+        int result;
+        Apply apply = JSON.toJavaObject(jsonObject, Apply.class);
+        result = applyMapper.updateApplyPassById(apply);
+        if(apply.getPass() == 1){
+            Employee employee = JSON.toJavaObject(jsonObject, Employee.class);
+            String employeeId = employeeMapper.selectLastId();
+            employeeId = String.format("%02d", Integer.parseInt(employeeId) + 1);
+            employee.setEmployeeId(employeeId);
+            result = employeeMapper.insertEmployee(employee);
+        }
+        return result;
+    }
+
     //格式化信息
     @Override
     public void formatJSON(JSONArray jsonArray) {

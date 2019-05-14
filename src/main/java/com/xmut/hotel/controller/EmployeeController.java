@@ -5,6 +5,7 @@ import com.xmut.hotel.entity.Employee;
 import com.xmut.hotel.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -28,5 +29,12 @@ public class EmployeeController {
     @ResponseBody
     public JSONObject getEmployee(){
         return employeeService.getJSONObjectEmployee();
+    }
+
+    //处理员工审核结果
+    @RequestMapping("/setApply")
+    @ResponseBody
+    public int setApply(@RequestBody JSONObject jsonObject){
+        return employeeService.updateApply(jsonObject);
     }
 }

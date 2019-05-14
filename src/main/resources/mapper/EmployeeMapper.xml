@@ -95,4 +95,13 @@
   <select id="selectAllEmployee" resultMap="BaseResultMap">
     select * from t_employee
   </select>
+
+<!--  增加员工-->
+  <insert id="insertEmployee" parameterType="Employee">
+        insert into t_employee values(#{employeeId}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, #{salary,jdbcType=INTEGER})
+  </insert>
+<!--  获取最后一个员工ID-->
+  <select id="selectLastId" resultType="java.lang.String">
+        select employee_id from t_employee order by employee_id desc limit 1;
+  </select>
 </mapper>

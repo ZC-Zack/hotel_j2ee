@@ -1,5 +1,6 @@
 package com.xmut.hotel.mapper;
 
+import com.xmut.hotel.entity.Apply;
 import com.xmut.hotel.entity.Order;
 
 import java.util.List;
@@ -25,4 +26,8 @@ public interface OrderMapper {
 
     //查找最后一个订单号
     String selectLastId();
+
+    //修改pass 数据通过id
+    int updateApplyPassById(Apply apply);
+
 }

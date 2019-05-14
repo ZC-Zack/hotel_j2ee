@@ -95,4 +95,9 @@
   <select id="selectApplyByPass" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select * from t_apply where pass=#{pass,jdbcType=INTEGER}
   </select>
+
+<!--  通过id 修改pass-->
+  <update id="updateApplyPassById" parameterType="Apply">
+        update t_apply set pass=#{pass,jdbcType=INTEGER} where apply_id=#{applyId,jdbcType=VARCHAR}
+  </update>
 </mapper>

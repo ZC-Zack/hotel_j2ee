@@ -18,4 +18,9 @@ public interface EmployeeMapper {
     int updateByPrimaryKey(Employee record);
 
     List<Employee> selectAllEmployee();
+
+    //插入员工数据
+    int insertEmployee(Employee employee);
+
+    String selectLastId();
 }

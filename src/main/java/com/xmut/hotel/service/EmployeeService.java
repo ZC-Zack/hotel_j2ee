@@ -27,6 +27,9 @@ public interface EmployeeService {
     //获取所有的员工表通过JSON封装
     JSONObject getJSONObjectEmployee();
 
+    //插入员工数据
+    int updateApply(JSONObject jsonObject);
+
     //格式转换，格式转换成layui表格要求的格式
     void formatJSON(JSONArray jsonArray);
 

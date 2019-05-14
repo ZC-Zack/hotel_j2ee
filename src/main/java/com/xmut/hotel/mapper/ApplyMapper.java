@@ -19,4 +19,6 @@ public interface ApplyMapper {
 
     //获取所有的申请表通过Pass
     List<Apply> selectApplyByPass(Integer pass);
+
+    int updateApplyPassById(Apply apply);
 }
