@@ -111,6 +111,7 @@
 		dataType: "json",
 		success: function (data) {
 			//console.log(JSON.stringify(data.money[0]));
+			// console.log(JSON.stringify(data.momey));
 			var chartRoomByMonth = echarts.init(document.getElementById("chartRoomByMonth"));
 			var option3 = {
 				title : {
@@ -132,18 +133,7 @@
 					type : 'value'
 				},
 				series : [ {
-					data : [ JSON.stringify(data.value[0]),
-						JSON.stringify(data.value[1]),
-						JSON.stringify(data.value[2]),
-						JSON.stringify(data.value[3]),
-						JSON.stringify(data.value[4]),
-						JSON.stringify(data.value[5]),
-						JSON.stringify(data.value[6]),
-						JSON.stringify(data.value[7]),
-						JSON.stringify(data.value[8]),
-						JSON.stringify(data.value[9]),
-						JSON.stringify(data.value[10]),
-						JSON.stringify(data.value[11]) ],
+					data : data.value,
 					type : 'line',
 					symbol : 'triangle',
 					symbolSize : 20,
@@ -206,18 +196,7 @@
 					name : '月利润',
 					type : 'bar',
 					barWidth : '60%',
-					data : [ JSON.stringify(data.money[0]),
-						JSON.stringify(data.money[1]),
-						JSON.stringify(data.money[2]),
-						JSON.stringify(data.money[3]),
-						JSON.stringify(data.money[4]),
-						JSON.stringify(data.money[5]),
-						JSON.stringify(data.money[6]),
-						JSON.stringify(data.money[7]),
-						JSON.stringify(data.money[8]),
-						JSON.stringify(data.money[9]),
-						JSON.stringify(data.money[10]),
-						JSON.stringify(data.money[11]) ]
+					data : data.money
 				} ]
 			};
 
