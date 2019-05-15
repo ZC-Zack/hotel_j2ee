@@ -5,10 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<title>layout 后台大布局 - Layui</title>
 
-	<link rel="stylesheet" href="/webjars/layui/2.4.5/css/layui.css">
+	<link rel="stylesheet" href="../webjars/layui/2.4.5/css/layui.css">
 	<script src=" https://cdnjs.cloudflare.com/ajax/libs/echarts/3.4.0/echarts.min.js "></script>
-	<script src="/webjars/jquery/1.11.1/jquery.js"></script>
-	<script src="/webjars/layui/2.4.5/layui.js"></script>
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
@@ -62,7 +60,7 @@
 						<dd><a href="completeOrder">已完成订单</a></dd>
 					</dl>
 				</li>
-				<li class="layui-nav-item layui-nav-itemed">
+				<li class="layui-nav-item">
 					<a class="">员工信息</a>
 					<dl class="layui-nav-child">
 						<dd><a href="employee">入职员工</a></dd>
@@ -83,12 +81,10 @@
 
 	<div class="layui-body">
 		<!-- 内容主体区域 -->
-		<div class="myechartv1"
-			 style=" margin-left: 100px;margin-top: 100px;float: left;">
+		<div class="myechartv1" style=" margin-left: 100px;margin-top: 100px;float: left;">
 			<div id="myechart1" style="width:500px; height:500px;"></div>
 		</div>
-		<div class="myechart2"
-			 style=" margin-left: 100px;margin-top: 100px;float: left;">
+		<div class="myechart2" style=" margin-left: 100px;margin-top: 100px;float: left;">
 			<div id="myechart2" style="width:500px; height:500px;"></div>
 		</div>
 	</div>
@@ -98,6 +94,15 @@
 		© 后台系统
 	</div>
 </div>
+<script src="../webjars/jquery/1.11.1/jquery.js"></script>
+<script src="../webjars/layui/2.4.5/layui.js"></script>
+<script>
+	//JavaScript代码区域
+	layui.use('element', function(){
+		var element = layui.element;
+
+	});
+</script>
 <script>
         $.ajax({
             url: "/user/monthOrder",
