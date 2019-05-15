@@ -31,7 +31,6 @@ public class OrderController {
     @RequestMapping("/completeOrder")
     @ResponseBody
     public JSONObject getCompleteOrder(){
-
         return orderService.getJSONObjectOrderByExit(1);
     }
 
