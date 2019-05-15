@@ -12,15 +12,15 @@
         <div class="layui-logo">酒店后台管理系统</div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
-            <li class="layui-nav-item"><a href="">控制台</a></li>
-            <li class="layui-nav-item"><a href="">商品管理</a></li>
-            <li class="layui-nav-item"><a href="">用户</a></li>
+            <li class="layui-nav-item"><a href="">后台报修</a></li>
+            <li class="layui-nav-item"><a href="">系统设置</a></li>
+            <li class="layui-nav-item"><a href="">场所设置</a></li>
             <li class="layui-nav-item">
-                <a href="javascript:;">其它系统</a>
+                <a href="javascript:;">其它</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="">邮件管理</a></dd>
-                    <dd><a href="">消息管理</a></dd>
-                    <dd><a href="">授权管理</a></dd>
+                    <dd><a href="">会员管理</a></dd>
+                    <dd><a href="">技师管理</a></dd>
+                    <dd><a href="">酒水管理</a></dd>
                 </dl>
             </li>
         </ul>
@@ -28,14 +28,14 @@
             <li class="layui-nav-item">
                 <a href="javascript:;">
                     <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-                    贤心
+                    用户
                 </a>
                 <dl class="layui-nav-child">
                     <dd><a href="">基本资料</a></dd>
                     <dd><a href="">安全设置</a></dd>
                 </dl>
             </li>
-            <li class="layui-nav-item"><a href="">退了</a></li>
+            <li class="layui-nav-item"><a href="">退出</a></li>
         </ul>
     </div>
 
@@ -43,8 +43,8 @@
         <div class="layui-side-scroll">
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree"  lay-filter="test">
-                <li class="layui-nav-item layui-nav-itemed">
-                    <a class="">房间信息</a>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">房间信息</a>
                     <dl class="layui-nav-child">
                         <dd class="layui-this"><a href="roomInformation">房间列表</a></dd>
                         <dd><a href="roomUsed">已用房间</a></dd>
@@ -52,20 +52,26 @@
                     </dl>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;">订单信息</a>
+                    <a class="">订单信息</a>
                     <dl class="layui-nav-child">
                         <dd><a href="unCompleteOrder">未完成订单</a></dd>
                         <dd><a href="completeOrder">已完成订单</a></dd>
                     </dl>
                 </li>
-                <li class="layui-nav-item">
+                <li class="layui-nav-item layui-nav-itemed">
                     <a class="">员工信息</a>
                     <dl class="layui-nav-child">
                         <dd><a href="employee">入职员工</a></dd>
                         <dd><a href="apply">员工申请</a></dd>
                     </dl>
                 </li>
-                <li class="layui-nav-item"><a href="">数据图表</a></li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="">数据图表</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="chartSeason">季度报表</a></dd>
+                        <dd><a href="chartMonth">年度报表</a></dd>
+                    </dl>
+                </li>
             </ul>
         </div>
     </div>
@@ -100,10 +106,10 @@
             ,url: '/admin/getAllRoom' //数据接口
             ,cols: [
                 [ //表头
-                    {field: 'roomId', title: '房间号', width:120, sort: true, fixed: 'left'}
-                    ,{field: 'roomName', title: '房间名', width:200}
-                    ,{field: 'roomPrice', title: '价钱', width:80}
-                    ,{field: 'roomExit', title: '房间是否有人预定', width:80}
+                    {field: 'roomId', title: '房间号', align:'center',width:120, sort: true, fixed: 'left'}
+                    ,{field: 'roomName', title: '房间名', align:'center',width:200}
+                    ,{field: 'roomPrice', title: '价钱',align:'center', width:80}
+                    ,{field: 'roomExit', title: '房间是否有人预定',align:'center', width:150}
                 ]
             ]
         });
