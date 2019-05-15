@@ -6,9 +6,9 @@
     <title>layout 后台大布局 - Layui</title>
     <link rel="stylesheet" href="../webjars/layui/2.4.5/css/layui.css">
 </head>
-<body class="layui-layout-body">
+<body class="layui-layout-body" style="background-color:#f2f2f2">
 <div class="layui-layout">
-    <div class="layui-header">
+    <div class="layui-layout-header">
         <ul class="layui-nav" lay-filter="">
             <li class="layui-nav-item layui-this"><a href="roomOrder">房间预订</a></li>
             <li class="layui-nav-item"><a href="comment">评价</a></li>
@@ -17,7 +17,13 @@
             <li class="layui-nav-item"><a href="">社区</a></li>
         </ul>
     </div>
+
     <div class="layui-layout-body">
+        <span class="layui-breadcrumb" style="margin-left: 30px;">
+            <a th:href="roomOrder">首页</a>
+            <a th:href="roomScan"><cite>房间详情</cite></a>
+            <a><cite>订单</cite></a>
+        </span>
         <form class="layui-form" action="/user/setOrderTable" method="post">
             <div class="layui-form-item">
                 <label class="layui-form-label">房间名</label>

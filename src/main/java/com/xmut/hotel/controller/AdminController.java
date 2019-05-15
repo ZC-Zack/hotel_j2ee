@@ -79,9 +79,15 @@ public class AdminController {
         return "admin/apply";
     }
 
-    //数据图表
+    //季度报表
     @RequestMapping("/chartSeason")
     public String chartSeason(){
         return "admin/chartSeason";
+    }
+
+    //年度报表
+    @RequestMapping("/chartMonth")
+    public String chartMonth(){
+        return "admin/chartMonth";
     }
 }

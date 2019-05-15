@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>layout 后台大布局 - Layui</title>
+    <title>酒店管理系统</title>
     <link rel="stylesheet" href="../webjars/layui/2.4.5/css/layui.css">
 </head>
 <body class="layui-layout-body">
@@ -12,15 +12,15 @@
         <div class="layui-logo">酒店后台管理系统</div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
-            <li class="layui-nav-item"><a href="">控制台</a></li>
-            <li class="layui-nav-item"><a href="">商品管理</a></li>
-            <li class="layui-nav-item"><a href="">用户</a></li>
+            <li class="layui-nav-item"><a href="">后台报修</a></li>
+            <li class="layui-nav-item"><a href="">系统设置</a></li>
+            <li class="layui-nav-item"><a href="">场所设置</a></li>
             <li class="layui-nav-item">
-                <a href="javascript:;">其它系统</a>
+                <a href="javascript:;">其它</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="">邮件管理</a></dd>
-                    <dd><a href="">消息管理</a></dd>
-                    <dd><a href="">授权管理</a></dd>
+                    <dd><a href="">会员管理</a></dd>
+                    <dd><a href="">技师管理</a></dd>
+                    <dd><a href="">酒水管理</a></dd>
                 </dl>
             </li>
         </ul>
@@ -28,14 +28,14 @@
             <li class="layui-nav-item">
                 <a href="javascript:;">
                     <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-                    贤心
+                    用户
                 </a>
                 <dl class="layui-nav-child">
                     <dd><a href="">基本资料</a></dd>
                     <dd><a href="">安全设置</a></dd>
                 </dl>
             </li>
-            <li class="layui-nav-item"><a href="">退了</a></li>
+            <li class="layui-nav-item"><a href="">退出</a></li>
         </ul>
     </div>
 
@@ -54,7 +54,7 @@
                 <li class="layui-nav-item">
                     <a class="">订单信息</a>
                     <dl class="layui-nav-child">
-                        <dd class="layui-this"><a href="unCompleteOrder">未完成订单</a></dd>
+                        <dd><a href="unCompleteOrder">未完成订单</a></dd>
                         <dd><a href="completeOrder">已完成订单</a></dd>
                     </dl>
                 </li>
@@ -65,14 +65,20 @@
                         <dd class="layui-this"><a href="apply">员工申请</a></dd>
                     </dl>
                 </li>
-                <li class="layui-nav-item"><a href="">数据图表</a></li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="">数据图表</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="chartSeason">季度报表</a></dd>
+                        <dd><a href="chartMonth">年度报表</a></dd>
+                    </dl>
+                </li>
             </ul>
         </div>
     </div>
 
     <div class="layui-body">
         <!-- 内容主体区域 -->
-        <div style="padding: 15px;">
+        <div style="padding: 15px; text-align: center">
             <table id="apply" lay-filter="apply"></table>
         </div>
     </div>
@@ -101,11 +107,11 @@
             ,url: '/admin/getApply' //数据接口
             ,cols: [
                 [ //表头
-                    {field: 'applyId', title: '申请单号', width:120, sort: true, fixed: 'left'}
-                    ,{field: 'name', title: '姓名', width:200}
-                    ,{field: 'sex', title: '性别', width:80}
-                    ,{field: 'telephone', title: '电话', width:80}
-                    ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
+                    {field: 'applyId', title: '申请单号',align:'center', width:120, sort: true, fixed: 'left'}
+                    ,{field: 'name', title: '姓名',align:'center',  width:100}
+                    ,{field: 'sex', title: '性别',align:'center',  width:80}
+                    ,{field: 'telephone', title: '电话',align:'center',  width:180}
+                    ,{fixed: 'right', title:'操作',align:'center',  toolbar: '#barDemo', width:150}
                 ]
             ]
         });
