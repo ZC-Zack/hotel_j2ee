@@ -6,6 +6,9 @@ import com.xmut.hotel.entity.Order;
 import java.util.List;
 
 public interface OrderMapper {
+
+    List<Order> getAllOrder();
+
     int deleteByPrimaryKey(String orderId);
 
     int insert(Order record);
