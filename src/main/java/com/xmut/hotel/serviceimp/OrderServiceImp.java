@@ -3,6 +3,7 @@ package com.xmut.hotel.serviceimp;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.sun.org.apache.xpath.internal.operations.Or;
 import com.xmut.hotel.entity.Order;
 import com.xmut.hotel.entity.Room;
 import com.xmut.hotel.mapper.OrderMapper;
@@ -11,9 +12,13 @@ import com.xmut.hotel.service.OrderService;
 import com.xmut.hotel.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import java.text.ParseException;
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+
 
 @Service
 public class OrderServiceImp implements OrderService {
@@ -32,6 +37,57 @@ public class OrderServiceImp implements OrderService {
     @Override
     public List<Order> getListOrderByExit(Integer usedExit) {
         return orderMapper.selectOrderByExit(usedExit);
+    }
+
+    @Override
+    public JSONObject getJSONObjectMonth(){
+        List<Order> list = orderMapper.getAllOrder();
+        //
+        Calendar cal = Calendar.getInstance();
+
+        SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd");
+        //Date date=new Date();
+        int month;
+
+        int season[] = new int[12];
+        for(int i = 0; i < season.length; i++)
+            season[i]=0;
+        Integer money[] = new Integer[12];
+        for(int i = 0;i < money.length;i++) {
+            money[i] = 0;
+        }
+
+        try {
+            for(int i = 0; i < list.size(); i++){
+                Date date = formatter.parse(list.get(i).getInDate());
+                cal.setTime(date);
+                month = cal.get(Calendar.MONTH);
+                for (int j = 0; j < 12; j++) {
+                    if (month == j) {
+                        season[j]++;
+                        money[j] += list.get(j).getPrice();
+                        break;
+                    }
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        //json对像
+        //JSONObject resultJson=new JSONObject();
+        //JSONArray jsonArray=new JSONArray();
+
+        JSONObject jsonOject=new JSONObject();
+        jsonOject.put("value",season);
+        jsonOject.put("money",money);
+
+        //jsonArray.add(jsonOject);
+        //resultJson.put("chart1", jsonArray);
+        //return resultJson;
+        return jsonOject;
+        /*JSONArray jsonArray = JSONArray.parseArray(JSON.toJSONString(list));
+        formatJSON(jsonArray);
+        return jsonObject;*/
     }
 
     @Override

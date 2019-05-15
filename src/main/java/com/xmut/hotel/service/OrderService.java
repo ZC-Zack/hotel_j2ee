@@ -8,6 +8,8 @@ import com.xmut.hotel.entity.Order;
 import java.util.List;
 
 public interface OrderService {
+    //生成季度报表
+    JSONObject getJSONObjectMonth();
 
     //通过Exit查找订单,返回List
     List<Order> getListOrderByExit(Integer usedExit);
