@@ -10,7 +10,8 @@
     <result column="price" jdbcType="INTEGER" property="price" />
     <result column="in_date" jdbcType="VARCHAR" property="inDate" />
     <result column="out_date" jdbcType="VARCHAR" property="outDate" />
-    <result column="used_exit" jdbcType="INTEGER" property="usedExit" />
+    <result column="used_exit" jdbcType=
+            "INTEGER" property="usedExit" />
   </resultMap>
   <sql id="Base_Column_List">
     order_id, room_id, username, name, telephone, price, in_date, out_date, used_exit
