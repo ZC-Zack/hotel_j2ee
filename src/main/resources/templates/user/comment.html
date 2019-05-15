@@ -28,8 +28,13 @@
                 <div class="layui-tab-item ">
                     <table >
                         <tr th:each="comment:${commentList}">
-                            <td style="width: 40px;" th:text="${comment.orderId}"></td>
-                            <td style="width: 40px;" th:text="${comment.username}"></td>
+                            <div style="background-color: aqua">
+                                <p th:text="${comment.orderId}"></p>
+                            </div>
+                            <div>
+                                <p th:text="${comment.username}"></p>
+                            </div>
+
                         </tr>
                     </table>
                 </div>
