@@ -7,16 +7,55 @@
     <link rel="stylesheet" href="../webjars/layui/2.4.5/css/layui.css">
 </head>
 <body class="layui-layout-body">
-<div class="layui-layout">
 
-    <div class="layui-layout-body">
-        <span th:text="${room.roomName}" id="roomName"></span>
-        <br>
-        价钱<span th:text="${room.roomPrice}"></span>
-        <br>
-        <button class="layui-btn" id="orderBtn">立即预订</button>
-        <a th:href="roomOrder"><button class="layui-btn">返回</button></a>
+<div class="layui-layout">
+    <div class="layui-header">
+        <ul class="layui-nav" lay-filter="">
+            <li class="layui-nav-item layui-this"><a href="roomOrder">房间预订</a></li>
+            <li class="layui-nav-item "><a href="comment">评价</a></li>
+            <li class="layui-nav-item"><a href="userOrder">我的订单</a></li>
+            <li class="layui-nav-item"><a href="apply">申请入职</a></li>
+            <li class="layui-nav-item"><a href="">社区</a></li>
+        </ul>
     </div>
+    <div class="layui-carousel" id="test1" style="margin-top: 50px;margin-left: 100px;margin-right: 100px">
+        <div carousel-item>
+            <div style="background-color: bisque">条目1</div>
+            <div style="background-color: antiquewhite">条目2</div>
+            <div style="background-color: blanchedalmond">条目3</div>
+            <div style="background-color: burlywood">条目4</div>
+            <div style="background-color: brown">条目5</div>
+        </div>
+    </div>
+    <div style="width: 300px;margin-left: 600px">
+        <h1>XXXXXXX酒店</h1>
+    </div>
+    <div class="layui-tab"style="margin-left: 100px">
+        <ul class="layui-tab-title">
+            <li class="layui-this">房间预定</li>
+            <li>用户评论</li>
+            <li>酒店信息</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <div class="layui-layout-body">
+                <span th:text="${room.roomName}" id="roomName"></span>
+                <br>
+                价钱<span th:text="${room.roomPrice}"></span>
+                <br>
+                <button class="layui-btn" id="orderBtn">立即预订</button>
+                <a th:href="roomOrder"><button class="layui-btn">返回</button></a>
+            </div>
+            </div>
+            <div class="layui-tab-item">内容2</div>
+            <div class="layui-tab-item">
+                <h2>联系电话</h2><p>156XXXXXXXX</p><br>
+                <h2>酒店信息</h2><p>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p><br>
+                <h2>酒店简介</h2><p>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p><br>
+            </div>
+        </div>
+    </div>
+
 </div>
 <script src="../webjars/layui/2.4.5/layui.js"></script>
 <script src="../webjars/jquery/1.11.1/jquery.js"></script>
@@ -33,6 +72,26 @@
         laydate.render({
             elem: '#date1'
         });
+    });
+</script>
+<script>
+    layui.use('carousel', function(){
+        var carousel = layui.carousel;
+        //建造实例
+        carousel.render({
+            elem: '#test1'
+            ,width: '1200px' //设置容器宽度
+            ,arrow: 'always' //始终显示箭头
+            //,anim: 'updown' //切换动画方式
+        });
+    });
+</script>
+<script>
+    //注意：选项卡 依赖 element 模块，否则无法进行功能性操作
+    layui.use('element', function(){
+        var element = layui.element;
+
+        //…
     });
 </script>
 <script>
