@@ -17,6 +17,9 @@ public interface CommentService {
     //通过exit来返回JSONObject
     JSONObject getJSONObjectCommentByExit(Integer exit);
 
+    //更新评价内容
+    int setCommentContent(JSONObject jsonObject);
+
     //格式转换，格式转换成layui表格要求的格式
     void formatJSON(JSONArray jsonArray);
 }

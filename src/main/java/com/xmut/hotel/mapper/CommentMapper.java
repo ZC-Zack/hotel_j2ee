@@ -10,4 +10,6 @@ public interface CommentMapper {
 
     List<Comment> selectCommentByExit(Integer commentExit);
 
+    //更新评价内容
+    int updateCommentById(Comment comment);
 }

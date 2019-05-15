@@ -34,8 +34,8 @@ public class CommentController {
 
     @RequestMapping("/updateComment")
     @ResponseBody
-    public void updateComment(@RequestBody JSONObject value){
-        System.out.println(value.toJSONString());
+    public int updateComment(@RequestBody JSONObject jsonObject){
+        return commentService.setCommentContent(jsonObject);
     }
 
 }

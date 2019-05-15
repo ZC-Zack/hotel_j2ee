@@ -43,6 +43,13 @@ public class CommentServiceImp implements CommentService {
         return jsonObject;
     }
 
+    @Override
+    public int setCommentContent(JSONObject jsonObject) {
+        Comment comment = JSON.toJavaObject(jsonObject, Comment.class);
+        comment.setCommentExit(1);
+        return commentMapper.updateCommentById(comment);
+    }
+
     //格式化信息
     @Override
     public void formatJSON(JSONArray jsonArray) {
