@@ -8,7 +8,7 @@
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout">
-    <div class="layui-header">
+    <div class="layui-layout-header">
         <ul class="layui-nav" lay-filter="">
             <li class="layui-nav-item layui-this"><a href="roomOrder">房间预订</a></li>
             <li class="layui-nav-item"><a href="comment">评价</a></li>
@@ -17,10 +17,11 @@
             <li class="layui-nav-item"><a href="">社区</a></li>
         </ul>
     </div>
+
     <div class="layui-layout-body">
         <span class="layui-breadcrumb" style="margin-left: 30px;">
             <a href="roomOrder">首页</a>
-            <a href=""><cite>房间详情</cite></a>
+            <a><cite>房间详情</cite></a>
         </span>
         <br>
         <span th:text="${room.roomName}" id="roomName"></span>
@@ -46,6 +47,11 @@
         laydate.render({
             elem: '#date1'
         });
+    });
+    layui.use('element', function(){
+        var element = layui.element;
+
+        //…
     });
 </script>
 <script>
@@ -77,15 +83,6 @@
                 }else{
                     window.location.href = "/user/orderSet?roomName=" + roomName;
                 }
-                // $.ajax({
-                //     url: "/user/orderSet",
-                //     type: "POST",
-                //     contentType: "application/json;charset=utf-8",
-                //     data: JSON.stringify(jsonData),
-                //     success: function (data) {
-                //
-                //     }
-                // });
             }
         })
     });
