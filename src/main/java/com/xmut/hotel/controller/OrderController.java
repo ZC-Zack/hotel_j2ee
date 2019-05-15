@@ -20,6 +20,13 @@ public class OrderController {
     @Autowired
     private RoomService roomService;
 
+    //返回每月收入
+    @RequestMapping("/monthOrder")
+    @ResponseBody
+    public JSONObject getMonthOrder(){
+        return orderService.getJSONObjectMonth();
+    }
+
     //返回已经完成的订单
     @RequestMapping("/completeOrder")
     @ResponseBody

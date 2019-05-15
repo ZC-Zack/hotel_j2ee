@@ -78,4 +78,10 @@ public class AdminController {
     public String apply(){
         return "admin/apply";
     }
+
+    //数据图表
+    @RequestMapping("/chartSeason")
+    public String chartSeason(){
+        return "admin/chartSeason";
+    }
 }
