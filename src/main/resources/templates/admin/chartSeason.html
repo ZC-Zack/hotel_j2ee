@@ -81,11 +81,11 @@
 
 	<div class="layui-body">
 		<!-- 内容主体区域 -->
-		<div class="myechartv1" style=" margin-left: 100px;margin-top: 100px;float: left;">
-			<div id="myechart1" style="width:500px; height:500px;"></div>
+		<div style=" margin-left: 100px;margin-top: 100px;float: left;">
+			<div id="chartRoom" style="width:500px; height:500px;"></div>
 		</div>
-		<div class="myechart2" style=" margin-left: 100px;margin-top: 100px;float: left;">
-			<div id="myechart2" style="width:500px; height:500px;"></div>
+		<div style=" margin-left: 100px;margin-top: 100px;float: left;">
+			<div id="chartProfit" style="width:500px; height:500px;"></div>
 		</div>
 	</div>
 
@@ -111,8 +111,8 @@
             dataType: "json",
             success: function (data) {
                 //console.log(JSON.stringify(data.money[0]));
-                var myechart1 = echarts.init(document
-                    .getElementById("myechart1"));
+                var chartRoom = echarts.init(document
+                    .getElementById("chartRoom"));
                 var option1 = {
                     title : {
                         text : '季度房间报表',
@@ -161,9 +161,9 @@
                     } ]
                 };
                 //date重新配置
-                myechart1.setOption(option1);
-                var myechart2 = echarts.init(document
-                    .getElementById("myechart2"));
+				chartRoom.setOption(option1);
+                var chartProfit = echarts.init(document
+                    .getElementById("chartProfit"));
                 var option2 = {
                     title : {
                         text : '季度利润报表',
@@ -211,7 +211,7 @@
                         }
                     } ]
                 };
-                myechart2.setOption(option2);
+				chartProfit.setOption(option2);
             }
         });
 </script>

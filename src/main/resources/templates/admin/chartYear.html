@@ -80,11 +80,11 @@
 	<div class="layui-body">
 		<!-- 内容主体区域 -->
 		<div style="padding: 15px;">
-			<div class="myechart3" style=" margin-left: 150px;margin-top: 30px;float: left;">
-				<div id="myechart3" style="width:1000px; height:300px;"></div>
+			<div style=" margin-left: 150px;margin-top: 30px;float: left;">
+				<div id="chartRoomByMonth" style="width:1000px; height:300px;"></div>
 			</div>
-			<div class="myechart4" style=" margin-left: 190px;margin-top: 10px;float: left;">
-				<div id="myechart4" style="width:950px; height:250px; float: left;"></div>
+			<div style=" margin-left: 190px;margin-top: 10px;float: left;">
+				<div id="chartProfitByMonth" style="width:950px; height:250px; float: left;"></div>
 			</div>
 		</div>
 	</div>
@@ -111,7 +111,7 @@
 		dataType: "json",
 		success: function (data) {
 			//console.log(JSON.stringify(data.money[0]));
-			var myechart3 = echarts.init(document.getElementById("myechart3"));
+			var chartRoomByMonth = echarts.init(document.getElementById("chartRoomByMonth"));
 			var option3 = {
 				title : {
 					text : '酒店每月预订房间报表',
@@ -163,9 +163,9 @@
 					}
 				} ]
 			};
-			myechart3.setOption(option3);
-			var myechart4 = echarts.init(document
-					.getElementById("myechart4"));
+			chartRoomByMonth.setOption(option3);
+			var chartProfitByMonth = echarts.init(document
+					.getElementById("chartProfitByMonth"));
 
 			var option4 = {
 				color : [ '#3398DB' ],
@@ -221,7 +221,7 @@
 				} ]
 			};
 
-			myechart4.setOption(option4);
+			chartProfitByMonth.setOption(option4);
 		}
 	});
 </script>
