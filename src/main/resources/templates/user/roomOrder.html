@@ -6,7 +6,7 @@
     <title>layout 后台大布局 - Layui</title>
     <link rel="stylesheet" href="../webjars/layui/2.4.5/css/layui.css">
 </head>
-<body class="layui-layout-body">
+<body class="layui-layout-body" style="background-color:#f2f2f2">
 <div class="layui-layout">
     <div class="layui-header">
         <ul class="layui-nav" lay-filter="">
@@ -19,14 +19,25 @@
     </div>
 
     <div class="layui-layout-body">
-        <table >
-            <tr th:each="room:${roomList}">
-                <a th:href="@{roomScan(roomId=${room.roomId})}" th:text="${room.roomName}"></a>
+        <span class="layui-breadcrumb" style="margin-left: 30px;">
+          <a href="roomOrder"><cite>首页</cite></a>
+        </span>
+        <div class="layui-fluid" style="margin-top: 20px">
+            <div class="layui-row" >
+                    <div class="layui-col-sm3 layui-col-space3"th:each="room:${roomList}" >
+                        <div class="layui-card " style="margin-left: 10px">
+                            <a th:href="@{roomScan(roomId=${room.roomId})}"><div class="layui-card-header" th:text="${room.roomName}"></div></a>
+                            <div class="layui-card-body">
+                                <img src="../img/roomImg.jpg" style="width: 200px; height: 100px; vertical-align:top">
+                                <span style="color: #FF5722;font-size: 20px">￥</span>
+                                <span th:text="${room.roomPrice}" style="color: #FF5722; font-size: 30px"></span>
+                            </div>
+                        </div>
+                    </div>
 
-                <span th:text="${room.roomPrice}"></span>
-                <hr class="layui-bg-green">
-            </tr>
-        </table>
+            </div>
+        </div>
+
     </div>
 
 </div>
