@@ -42,5 +42,4 @@
         select room_id from t_room where room_name=#{roomName,jdbcType=VARCHAR} and room_exit=#{0, jdbcType=INTEGER}
     </select>
 
-
 </mapper>

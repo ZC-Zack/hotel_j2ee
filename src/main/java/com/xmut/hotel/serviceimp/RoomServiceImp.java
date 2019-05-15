@@ -76,10 +76,8 @@ public class RoomServiceImp implements RoomService {
     }
 
     @Override
-    public int updateRoomUsedById(String roomId, Integer roomExit) {
-        Room room = new Room();
-        room.setRoomId(roomId);
-        room.setRoomExit(roomExit);
+    public int updateRoomUsedById(JSONObject jsonObject) {
+        Room room = JSON.toJavaObject(jsonObject, Room.class);
         return roomMapper.updateRoomUsedById(room);
     }
 
@@ -87,4 +85,5 @@ public class RoomServiceImp implements RoomService {
     public List<String> getRoomByName(String roomName) {
         return roomMapper.selectRoomByName(roomName);
     }
+
 }

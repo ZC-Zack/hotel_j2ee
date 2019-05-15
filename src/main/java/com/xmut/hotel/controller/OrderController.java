@@ -58,4 +58,11 @@ public class OrderController {
     public int cancelOrder(@RequestBody JSONObject jsonObject){
         return orderService.cancelOrder(jsonObject);
     }
+
+    //确认订单
+    @RequestMapping("/confirmOrder")
+    @ResponseBody
+    public int confirmOrder(@RequestBody JSONObject jsonObject){
+        return orderService.confirmOrder(jsonObject);
+    }
 }

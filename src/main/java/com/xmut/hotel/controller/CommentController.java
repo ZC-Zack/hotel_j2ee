@@ -6,12 +6,9 @@ import com.xmut.hotel.service.CommentService;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 @RequestMapping("/user")
 public class CommentController {
 
@@ -20,20 +17,17 @@ public class CommentController {
 
     //返回所有评价
     @RequestMapping("/getAllComment")
-    @ResponseBody
     public JSONArray getAllComment(){
         return commentService.getAllComment();
     }
 
     //返回未评价
     @RequestMapping("/getNoEvaluation")
-    @ResponseBody
     public JSONObject getNoEvaluation(){
         return commentService.getJSONObjectCommentByExit(0);
     }
 
     @RequestMapping("/updateComment")
-    @ResponseBody
     public int updateComment(@RequestBody JSONObject jsonObject){
         return commentService.setCommentContent(jsonObject);
     }

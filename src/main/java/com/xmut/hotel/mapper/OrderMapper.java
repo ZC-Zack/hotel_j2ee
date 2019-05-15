@@ -27,7 +27,7 @@ public interface OrderMapper {
     //查找最后一个订单号
     String selectLastId();
 
-    //修改pass 数据通过id
-    int updateUsedById(Order order);
+    //修改Exit 数据通过id
+    int updateOrderUsedById(Order order);
 
 }

@@ -21,6 +21,9 @@ public interface OrderService {
     //取消订单
     int cancelOrder(JSONObject jsonObject);
 
+    //确认订单
+    int confirmOrder(JSONObject jsonObject);
+
     //格式转换，格式转换成layui表格要求的格式
     void formatJSON(JSONArray jsonArray);
 }

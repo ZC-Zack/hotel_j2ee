@@ -1,5 +1,6 @@
 package com.xmut.hotel.service;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.xmut.hotel.entity.Room;
@@ -29,9 +30,8 @@ public interface RoomService {
     //通过房间Id查找房间
     Room getRoomById(String roomId);
 
-    //修改房间是否被占用
-    int updateRoomUsedById(String roomId, Integer roomExit);
-
     //查找空房间Id
     List<String> getRoomByName(String roomName);
+
+    int updateRoomUsedById(JSONObject jsonObject);
 }

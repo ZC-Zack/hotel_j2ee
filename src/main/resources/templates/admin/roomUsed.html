@@ -133,6 +133,9 @@
                 dataType: "text",
                 data: JSON.stringify(room),
                 success: function (data) {
+                    if( 1 == data){
+                        layer.alert("操作成功！");
+                    }
                     table.reload('roomUsed');
                 }
             });

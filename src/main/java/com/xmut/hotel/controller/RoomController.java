@@ -15,7 +15,7 @@ public class RoomController {
 
     @RequestMapping(value = "/admin/updateRoom", method = RequestMethod.POST)
     @ResponseBody
-    public void updateRoom(@RequestBody JSONObject value){
-        roomService.updateRoomUsedById(value.getString("roomId"), value.getInteger("roomExit"));
+    public void updateRoom(@RequestBody JSONObject jsonObject){
+        roomService.updateRoomUsedById(jsonObject);
     }
 }

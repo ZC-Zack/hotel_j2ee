@@ -60,7 +60,17 @@ public class OrderServiceImp implements OrderService {
     @Override
     public int cancelOrder(JSONObject jsonObject) {
         Order order = JSON.toJavaObject(jsonObject, Order.class);
-        return orderMapper.updateUsedById(order);
+        return orderMapper.updateOrderUsedById(order);
+    }
+
+    @Override
+    public int confirmOrder(JSONObject jsonObject) {
+        Order order = JSON.toJavaObject(jsonObject, Order.class);
+        order.setUsedExit(1);
+        Room room = JSON.toJavaObject(jsonObject, Room.class);
+        room.setRoomExit(1);
+        roomMapper.updateRoomUsedById(room);
+        return orderMapper.updateOrderUsedById(order);
     }
 
     //格式化信息
