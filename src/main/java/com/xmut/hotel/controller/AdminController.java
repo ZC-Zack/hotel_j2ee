@@ -48,7 +48,7 @@ public class AdminController {
     }
 
     //空房间信息查询
-    @RequestMapping("empty")
+    @RequestMapping("/empty")
     @ResponseBody
     public JSONObject getRoomEmpty(){
         return roomService.getListJSONObjectRoomByExit(0);

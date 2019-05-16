@@ -27,7 +27,7 @@ public class UserController {
 
     @RequestMapping("/comment")
     public String comment(ModelMap map){
-        map.addAttribute("commentList", commentService.getListComment());
+        map.addAttribute("commentList", commentService.getListCommentByExit(1));
         return "user/comment";
     }
 

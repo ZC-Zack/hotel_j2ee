@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
+
 @RestController
 @RequestMapping("/user")
 public class CommentController {
@@ -15,10 +17,13 @@ public class CommentController {
     @Autowired
     private CommentService commentService;
 
+    @Autowired
+    private HttpSession session;
+
     //返回所有评价
     @RequestMapping("/getAllComment")
-    public JSONArray getAllComment(){
-        return commentService.getAllComment();
+    public JSONObject getAllComment(){
+        return commentService.getJSONObjectCommentByExit(1);
     }
 
     //返回未评价

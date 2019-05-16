@@ -9,6 +9,7 @@ import com.xmut.hotel.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Service
@@ -16,6 +17,9 @@ public class CommentServiceImp implements CommentService {
 
     @Autowired
     private CommentMapper commentMapper;
+
+    @Autowired
+    private HttpSession session;
 
     private JSONObject jsonObject;
 
@@ -32,7 +36,10 @@ public class CommentServiceImp implements CommentService {
 
     @Override
     public List<Comment> getListCommentByExit(Integer exit) {
-        return commentMapper.selectCommentByExit(exit);
+        Comment comment = new Comment();
+        comment.setCommentExit(exit);
+        comment.setUsername((String) session.getAttribute("username"));
+        return commentMapper.selectCommentByExit(comment);
     }
 
     @Override

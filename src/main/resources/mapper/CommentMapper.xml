@@ -16,8 +16,8 @@
   </select>
 
 <!--  通过是否评价来选取表-->
-  <select id="selectCommentByExit" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select * from t_comment where comment_exit = #{commentExit,jdbcType=INTEGER}
+  <select id="selectCommentByExit" parameterType="Comment" resultMap="BaseResultMap">
+        select * from t_comment where comment_exit = #{commentExit,jdbcType=INTEGER} and username =#{username,jdbcType=VARCHAR}
   </select>
 <!--  添加评价内容-->
   <update id="updateCommentById" parameterType="Comment">

@@ -8,7 +8,7 @@ public interface CommentMapper {
 
     List<Comment> selectAllComment();
 
-    List<Comment> selectCommentByExit(Integer commentExit);
+    List<Comment> selectCommentByExit(Comment comment);
 
     //更新评价内容
     int updateCommentById(Comment comment);
