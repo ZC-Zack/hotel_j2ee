@@ -123,9 +123,6 @@ public class OrderServiceImp implements OrderService {
     public int confirmOrder(JSONObject jsonObject) {
         Order order = JSON.toJavaObject(jsonObject, Order.class);
         order.setUsedExit(1);
-        Room room = JSON.toJavaObject(jsonObject, Room.class);
-        room.setRoomExit(1);
-        roomMapper.updateRoomUsedById(room);
         return orderMapper.updateOrderUsedById(order);
     }
 

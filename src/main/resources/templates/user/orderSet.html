@@ -24,17 +24,17 @@
             <a th:href="roomScan"><cite>房间详情</cite></a>
             <a><cite>订单</cite></a>
         </span>
-        <form class="layui-form" action="/user/setOrderTable" method="post"style="margin-left: 450px;margin-top: 50px">
+        <form class="layui-form"  style="margin-left: 450px;margin-top: 50px">
             <div class="layui-form-item">
                 <label class="layui-form-label">房间名</label>
                 <div class="layui-input-inline">
-                    <input type="text" disabled name="roomName"  class="layui-input" th:placeholder="${roomName}">
+                    <input type="text" disabled name="roomName"  class="layui-input" th:value="${roomName}">
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">房间号</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="roomId" disabled  class="layui-input" th:placeholder="${roomId}">
+                    <input type="text" name="roomId" disabled  class="layui-input" th:value="${roomId}" autocomplete="on">
                 </div>
             </div>
             <div class="layui-form-item">
@@ -98,7 +98,7 @@
             $.ajax({
                 url: "/user/setOrderTable",
                 type:"POST",
-                contentType: "application/json;charset=UTF-8",
+                contentType:  "application/json;charset=utf-8",
                 dataType: "json",
                 data: JSON.stringify(data.field),
                 success: function (data) {
