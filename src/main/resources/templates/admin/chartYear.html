@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>layout 后台大布局 - Layui</title>
+	<link rel="stylesheet" href="../webjars/layui/2.4.5/css/layui.css">
+	<script src=" https://cdnjs.cloudflare.com/ajax/libs/echarts/3.4.0/echarts.min.js "></script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+	<div class="layui-header">
+		<div class="layui-logo">酒店后台管理系统</div>
+		<!-- 头部区域（可配合layui已有的水平导航） -->
+		<ul class="layui-nav layui-layout-left">
+			<li class="layui-nav-item"><a href="">后台报修</a></li>
+			<li class="layui-nav-item"><a href="">系统设置</a></li>
+			<li class="layui-nav-item"><a href="">场所设置</a></li>
+			<li class="layui-nav-item">
+				<a href="javascript:;">其它</a>
+				<dl class="layui-nav-child">
+					<dd><a href="">会员管理</a></dd>
+					<dd><a href="">技师管理</a></dd>
+					<dd><a href="">酒水管理</a></dd>
+				</dl>
+			</li>
+		</ul>
+		<ul class="layui-nav layui-layout-right">
+			<li class="layui-nav-item">
+				<a href="javascript:;">
+					<img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+					用户
+				</a>
+				<dl class="layui-nav-child">
+					<dd><a href="">基本资料</a></dd>
+					<dd><a href="">安全设置</a></dd>
+				</dl>
+			</li>
+			<li class="layui-nav-item"><a href="">退出</a></li>
+		</ul>
+	</div>
+
+	<div class="layui-side layui-bg-black">
+		<div class="layui-side-scroll">
+			<!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+			<ul class="layui-nav layui-nav-tree"  lay-filter="test">
+				<li class="layui-nav-item">
+					<a href="javascript:;">房间信息</a>
+					<dl class="layui-nav-child">
+						<dd><a href="roomInformation">房间列表</a></dd>
+						<dd><a href="roomUsed">已用房间</a></dd>
+						<dd><a href="roomEmpty">空房间</a></dd>
+					</dl>
+				</li>
+				<li class="layui-nav-item">
+					<a class="">订单信息</a>
+					<dl class="layui-nav-child">
+						<dd><a href="unCompleteOrder">未完成订单</a></dd>
+						<dd><a href="completeOrder">已完成订单</a></dd>
+					</dl>
+				</li>
+				<li class="layui-nav-item">
+					<a class="">员工信息</a>
+					<dl class="layui-nav-child">
+						<dd><a href="employee">入职员工</a></dd>
+						<dd><a href="apply">员工申请</a></dd>
+					</dl>
+				</li>
+				<li class="layui-nav-item  layui-nav-itemed">
+					<a class="">数据图表</a>
+					<dl class="layui-nav-child">
+						<dd><a href="chartSeason">季度报表</a></dd>
+						<dd  class="layui-this"><a href="chartYear">年度报表</a></dd>
+					</dl>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="layui-body">
+		<!-- 内容主体区域 -->
+		<div style="padding: 15px;">
+			<div style=" margin-left: 150px;margin-top: 30px;float: left;">
+				<div id="chartRoomByMonth" style="width:1000px; height:300px;"></div>
+			</div>
+			<div style=" margin-left: 190px;margin-top: 10px;float: left;">
+				<div id="chartProfitByMonth" style="width:950px; height:250px; float: left;"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="layui-footer">
+		<!-- 底部固定区域 -->
+		© 后台系统
+	</div>
+</div>
+<script src="../webjars/layui/2.4.5/layui.js"></script>
+<script src="../webjars/jquery/1.11.1/jquery.js"></script>
+<script>
+	//JavaScript代码区域
+	layui.use('element', function(){
+		var element = layui.element;
+
+	});
+</script>
+<script>
+	$.ajax({
+		url: "/user/monthOrder",
+		type: "POST",
+		contentType: "application/json;charset=utf-8",
+		dataType: "json",
+		success: function (data) {
+			//console.log(JSON.stringify(data.money[0]));
+			// console.log(JSON.stringify(data.momey));
+			var chartRoomByMonth = echarts.init(document.getElementById("chartRoomByMonth"));
+			var option3 = {
+				title : {
+					text : '酒店每月预订房间报表',
+					subtext : '每月预订出的房间',
+					x : 'center'
+				},
+				toolbox : {
+					feature : {
+						saveAsImage : {}
+					}
+				},
+				xAxis : {
+					type : 'category',
+					data : [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+						'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ]
+				},
+				yAxis : {
+					type : 'value'
+				},
+				series : [ {
+					data : data.value,
+					type : 'line',
+					symbol : 'triangle',
+					symbolSize : 20,
+					lineStyle : {
+						normal : {
+							color : 'green',
+							width : 4,
+							type : 'dashed'
+						}
+					},
+					itemStyle : {
+						normal : {
+							borderWidth : 3,
+							borderColor : 'yellow',
+							color : 'blue'
+						}
+					}
+				} ]
+			};
+			chartRoomByMonth.setOption(option3);
+			var chartProfitByMonth = echarts.init(document
+					.getElementById("chartProfitByMonth"));
+
+			var option4 = {
+				color : [ '#3398DB' ],
+				title : {
+					text : '酒店每月利润报表',
+					subtext : '每月酒店利润',
+					x : 'center'
+				},
+				toolbox : {
+					feature : {
+						saveAsImage : {}
+					}
+				},
+				tooltip : {
+					trigger : 'axis',
+					axisPointer : { // 坐标轴指示器，坐标轴触发有效
+						type : 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+					}
+				},
+				grid : {
+					left : '3%',
+					right : '4%',
+					bottom : '3%',
+					containLabel : true
+				},
+				xAxis : [ {
+					type : 'category',
+					data : [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+						'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ],
+					axisTick : {
+						alignWithLabel : true
+					}
+				} ],
+				yAxis : [ {
+					type : 'value'
+				} ],
+				series : [ {
+					name : '月利润',
+					type : 'bar',
+					barWidth : '60%',
+					data : data.money
+				} ]
+			};
+
+			chartProfitByMonth.setOption(option4);
+		}
+	});
+</script>
+</body>
+</html>

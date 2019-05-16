@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.xmut.hotel.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -86,8 +85,8 @@ public class AdminController {
     }
 
     //年度报表
-    @RequestMapping("/chartMonth")
+    @RequestMapping("/chartYear")
     public String chartMonth(){
-        return "admin/chartMonth";
+        return "admin/chartYear";
     }
 }
