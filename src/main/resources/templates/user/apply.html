@@ -29,12 +29,6 @@
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">电话</label>
-                    <div class="layui-input-inline">
-                        <input type="text" lay-verify="required" name="telephone" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-form-item">
                     <label class="layui-form-label">性别</label>
                     <div class="layui-input-block">
                         <input type="radio" name="sex" value="男" title="男" checked>
@@ -74,8 +68,7 @@
                 dataType: "text",
                 data: JSON.stringify(data.field),
                 success: function (data) {
-                    alert(data);
-                    if(0 == data){
+                    if(data === 0){
                         layer.alert("提交申请失败！");
                         return false;
                     }else {

@@ -109,7 +109,7 @@
                 success: function (data) {
                     //window.location.href = "/user/userOrder";
                     console.log(data);
-                    if(0 == data){
+                    if(data === 0){
                         layer.alert("下单失败！");
                         return false;
                     }else {
