@@ -106,9 +106,7 @@ public class OrderServiceImp implements OrderService {
         order.setOrderId(orderId);
         order.setUsername((String) session.getAttribute("username"));
         order.setUsedExit(0);
-        System.out.println(order.getRoomId());
         Room room = JSON.toJavaObject(jsonObject, Room.class);
-        System.out.println(room.getRoomName());
         room.setRoomId(jsonObject.getString("roomId"));
         room.setRoomExit(1);
         roomMapper.updateRoomUsedById(room);
