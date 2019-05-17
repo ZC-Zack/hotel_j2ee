@@ -60,12 +60,12 @@
             ,url: '/user/completeOrder' //数据接口
             ,cols: [
                 [ //表头
-                    {field: 'orderId', title: '订单号', width:80, sort: true, fixed: 'left'}
-                    ,{field: 'roomId', title: '房间号', width:80}
-                    ,{field: 'name', title: '入住者名字', width:80}
-                    ,{field: 'telephone', title: '手机号', width:80}
-                    ,{field: 'inDate', title: '入住时间', width:80}
-                    ,{field: 'outDate', title: '离店时间', width:80}
+                    {field: 'orderId', title: '订单号', width:80, sort: true, fixed: 'left', align: 'center'}
+                    ,{field: 'roomId', title: '房间号', width:80, align: 'center'}
+                    ,{field: 'name', title: '入住者名字', width:80, align: 'center'}
+                    ,{field: 'telephone', title: '手机号', width:80, align: 'center'}
+                    ,{field: 'inDate', title: '入住时间', width:160, align: 'center'}
+                    ,{field: 'outDate', title: '离店时间', width:160, align: 'center'}
                 ]
             ]
         });
@@ -75,13 +75,13 @@
             ,url: '/user/unCompleteOrder' //数据接口
             ,cols: [
                 [ //表头
-                    {field: 'orderId', title: '订单号', width:80, sort: true, fixed: 'left'}
-                    ,{field: 'roomId', title: '房间号', width:80}
-                    ,{field: 'name', title: '入住者名字', width:80}
-                    ,{field: 'telephone', title: '手机号', width:120}
-                    ,{field: 'inDate', title: '入住时间', width:120}
-                    ,{field: 'outDate', title: '离店时间', width:120}
-                    ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
+                    {field: 'orderId', title: '订单号', width:80, sort: true, fixed: 'left', align: 'center'}
+                    ,{field: 'roomId', title: '房间号', width:80, align: 'center'}
+                    ,{field: 'name', title: '入住者名字', width:80, align: 'center'}
+                    ,{field: 'telephone', title: '手机号', width:160, align: 'center'}
+                    ,{field: 'inDate', title: '入住时间', width:160, align: 'center'}
+                    ,{field: 'outDate', title: '离店时间', width:160, align: 'center'}
+                    ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:100, align: 'center'}
                 ]
             ]
         });

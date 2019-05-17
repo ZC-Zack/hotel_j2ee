@@ -26,6 +26,9 @@ public interface OrderService {
     //确认订单
     int confirmOrder(JSONObject jsonObject);
 
+    //通过用户名查找未完成或已完成的订单
+    JSONObject getRoomByUsername(Integer usedExit);
+
     //格式转换，格式转换成layui表格要求的格式
     void formatJSON(JSONArray jsonArray);
 }

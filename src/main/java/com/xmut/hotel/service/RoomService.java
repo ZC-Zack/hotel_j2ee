@@ -34,4 +34,5 @@ public interface RoomService {
     List<String> getRoomByName(String roomName);
 
     int updateRoomUsedById(JSONObject jsonObject);
+
 }

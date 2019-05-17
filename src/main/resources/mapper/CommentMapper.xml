@@ -23,4 +23,5 @@
   <update id="updateCommentById" parameterType="Comment">
         update t_comment set content=#{content,jdbcType=VARCHAR}, comment_exit=#{commentExit,jdbcType=INTEGER} where order_id=#{orderId,jdbcType=VARCHAR}
   </update>
+
 </mapper>

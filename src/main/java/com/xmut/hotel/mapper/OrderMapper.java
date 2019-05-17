@@ -2,6 +2,7 @@ package com.xmut.hotel.mapper;
 
 import com.xmut.hotel.entity.Apply;
 import com.xmut.hotel.entity.Order;
+import com.xmut.hotel.entity.Room;
 
 import java.util.List;
 
@@ -32,5 +33,7 @@ public interface OrderMapper {
 
     //修改Exit 数据通过id
     int updateOrderUsedById(Order order);
+
+    List<Order> selectOrderByName(Order order);
 
 }

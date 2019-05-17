@@ -12,4 +12,6 @@ public interface CommentMapper {
 
     //更新评价内容
     int updateCommentById(Comment comment);
+
+
 }

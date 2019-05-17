@@ -106,7 +106,9 @@ public class OrderServiceImp implements OrderService {
         order.setOrderId(orderId);
         order.setUsername((String) session.getAttribute("username"));
         order.setUsedExit(0);
-        Room room = new Room();
+        System.out.println(order.getRoomId());
+        Room room = JSON.toJavaObject(jsonObject, Room.class);
+        System.out.println(room.getRoomName());
         room.setRoomId(jsonObject.getString("roomId"));
         room.setRoomExit(1);
         roomMapper.updateRoomUsedById(room);
@@ -124,6 +126,17 @@ public class OrderServiceImp implements OrderService {
         Order order = JSON.toJavaObject(jsonObject, Order.class);
         order.setUsedExit(1);
         return orderMapper.updateOrderUsedById(order);
+    }
+
+    @Override
+    public JSONObject getRoomByUsername(Integer usedExit) {
+        Order order = new Order();
+        order.setUsedExit(usedExit);
+        order.setUsername((String) session.getAttribute("username"));
+        List<Order> list = orderMapper.selectOrderByName(order);
+        JSONArray jsonArray = JSONArray.parseArray(JSON.toJSONString(list));
+        formatJSON(jsonArray);
+        return jsonObject;
     }
 
     //格式化信息

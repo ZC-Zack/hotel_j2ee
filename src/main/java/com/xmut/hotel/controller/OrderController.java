@@ -5,10 +5,9 @@ import com.xmut.hotel.service.OrderService;
 import com.xmut.hotel.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/user")
@@ -20,6 +19,7 @@ public class OrderController {
     @Autowired
     private RoomService roomService;
 
+
     //返回每月收入
     @RequestMapping("/monthOrder")
     @ResponseBody
@@ -27,18 +27,33 @@ public class OrderController {
         return orderService.getJSONObjectMonth();
     }
 
+
+    //返回已经完成的订单
+    @RequestMapping("/adminCompleteOrder")
+    @ResponseBody
+    public JSONObject adminCompleteOrder(){
+        return orderService.getJSONObjectOrderByExit(1);
+    }
+
+    //返回未完成的订单
+    @RequestMapping("/adminUnCompleteOrder")
+    @ResponseBody
+    public JSONObject adminUnCompleteOrder(){
+        return orderService.getJSONObjectOrderByExit(0);
+    }
+
     //返回已经完成的订单
     @RequestMapping("/completeOrder")
     @ResponseBody
     public JSONObject getCompleteOrder(){
-        return orderService.getJSONObjectOrderByExit(1);
+        return orderService.getRoomByUsername(1);
     }
 
     //返回未完成的订单
     @RequestMapping("/unCompleteOrder")
     @ResponseBody
     public JSONObject getUnCompleteOrder(){
-        return orderService.getJSONObjectOrderByExit(0);
+        return orderService.getRoomByUsername(0);
     }
 
     @RequestMapping("/getRoomByName")
@@ -52,10 +67,12 @@ public class OrderController {
     }
 
     //生成订单
-    @RequestMapping(value = "/setOrderTable",method = RequestMethod.POST)
+    @RequestMapping(value = "/setOrderTable", method =RequestMethod.POST)
     @ResponseBody
     public int setOrderTable(@RequestBody JSONObject jsonObject){
-        return orderService.setOrder(jsonObject);
+        System.out.println(jsonObject.toJSONString());
+        System.out.println(orderService.setOrder(jsonObject));
+        return 1;
     }
 
     //取消订单

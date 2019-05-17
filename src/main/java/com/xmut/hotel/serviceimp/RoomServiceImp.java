@@ -9,6 +9,7 @@ import com.xmut.hotel.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 
@@ -19,6 +20,9 @@ public class RoomServiceImp implements RoomService {
     private RoomMapper roomMapper;
 
     private JSONObject jsonObject;
+
+    @Autowired
+    private HttpSession session;
 
     @Override
     public List<Room> getListRoom() {
@@ -80,6 +84,7 @@ public class RoomServiceImp implements RoomService {
         Room room = JSON.toJavaObject(jsonObject, Room.class);
         return roomMapper.updateRoomUsedById(room);
     }
+
 
     @Override
     public List<String> getRoomByName(String roomName) {

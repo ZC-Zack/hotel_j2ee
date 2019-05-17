@@ -67,7 +67,6 @@
 
         //监听提交
         form.on('submit(apply)', function(data){
-            alert(JSON.stringify(data.field));
             $.ajax({
                 url: "/admin/setApply",
                 type:"post",
