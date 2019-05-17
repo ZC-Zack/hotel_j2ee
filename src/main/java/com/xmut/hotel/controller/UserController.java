@@ -25,6 +25,7 @@ public class UserController {
     @Autowired
     private RoomService roomService;
 
+
     @RequestMapping("/comment")
     public String comment(ModelMap map){
         map.addAttribute("commentList", commentService.getListCommentByExit(1));
@@ -43,7 +44,9 @@ public class UserController {
     @RequestMapping("/orderSet")
     public String orderSet(ModelMap map, @RequestParam String roomName){
         map.addAttribute("roomName", roomName);
-        map.addAttribute("roomId", roomService.getRoomByName(roomName).get(0));
+        String roomId = roomService.getRoomByName(roomName).get(0);
+        map.addAttribute("roomId",roomId);
+        map.addAttribute("roomPrice", roomService.getRoomPrice(roomId));
         //return new ModelAndView("redirect:/user/orderSet");
         return "/user/orderSet";
     }

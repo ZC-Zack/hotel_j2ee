@@ -41,5 +41,8 @@
     <select id="selectRoomByName" parameterType="java.lang.String" resultMap="RoomIdMap">
         select room_id from t_room where room_name=#{roomName,jdbcType=VARCHAR} and room_exit=#{0, jdbcType=INTEGER}
     </select>
-
+<!--    查找房间的价格-->
+    <select id="selectPriceById" parameterType="java.lang.String" resultType="java.lang.String">
+        select room_price from t_room where room_id=#{roomId,jdbcType=VARCHAR}
+    </select>
 </mapper>

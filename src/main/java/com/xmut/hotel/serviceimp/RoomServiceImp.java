@@ -85,6 +85,11 @@ public class RoomServiceImp implements RoomService {
         return roomMapper.updateRoomUsedById(room);
     }
 
+    @Override
+    public String getRoomPrice(String roomId) {
+        return roomMapper.selectPriceById(roomId);
+    }
+
 
     @Override
     public List<String> getRoomByName(String roomName) {

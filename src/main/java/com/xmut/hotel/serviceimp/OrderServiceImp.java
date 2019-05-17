@@ -4,8 +4,10 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.sun.org.apache.xpath.internal.operations.Or;
+import com.xmut.hotel.entity.Comment;
 import com.xmut.hotel.entity.Order;
 import com.xmut.hotel.entity.Room;
+import com.xmut.hotel.mapper.CommentMapper;
 import com.xmut.hotel.mapper.OrderMapper;
 import com.xmut.hotel.mapper.RoomMapper;
 import com.xmut.hotel.service.OrderService;
@@ -25,6 +27,9 @@ public class OrderServiceImp implements OrderService {
 
     @Autowired
     private OrderMapper orderMapper;
+
+    @Autowired
+    private CommentMapper commentMapper;
 
     @Autowired
     private HttpSession session;
@@ -106,6 +111,7 @@ public class OrderServiceImp implements OrderService {
         order.setOrderId(orderId);
         order.setUsername((String) session.getAttribute("username"));
         order.setUsedExit(0);
+        order.setPrice(jsonObject.getInteger("roomPrice"));
         Room room = JSON.toJavaObject(jsonObject, Room.class);
         room.setRoomId(jsonObject.getString("roomId"));
         room.setRoomExit(1);
@@ -123,6 +129,9 @@ public class OrderServiceImp implements OrderService {
     public int confirmOrder(JSONObject jsonObject) {
         Order order = JSON.toJavaObject(jsonObject, Order.class);
         order.setUsedExit(1);
+        Comment comment = JSON.toJavaObject(jsonObject, Comment.class);
+        comment.setCommentTime(jsonObject.getString("inDate"));
+        commentMapper.insertComment(comment);
         return orderMapper.updateOrderUsedById(order);
     }
 

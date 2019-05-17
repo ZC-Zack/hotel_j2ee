@@ -53,6 +53,7 @@ public class CommentServiceImp implements CommentService {
     @Override
     public int setCommentContent(JSONObject jsonObject) {
         Comment comment = JSON.toJavaObject(jsonObject, Comment.class);
+
         comment.setCommentExit(1);
         return commentMapper.updateCommentById(comment);
     }

@@ -33,6 +33,9 @@ public interface RoomService {
     //查找空房间Id
     List<String> getRoomByName(String roomName);
 
+
     int updateRoomUsedById(JSONObject jsonObject);
 
+    //查找房间价格
+    String getRoomPrice(String roomPrice);
 }
